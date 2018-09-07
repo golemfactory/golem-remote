@@ -1,0 +1,1 @@
+PYTHON_PATH = "/home/jacek/golemenv/bin/python3"
