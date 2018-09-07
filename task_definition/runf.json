@@ -1,0 +1,19 @@
+{
+  "options": {
+    "sample_per_pixel": "",
+    "output_path": "/home/jacek/outputs/",
+    "format": "",
+    "compositing": false,
+    "queue_host": "localhost",
+    "queue_port": 6379
+  },
+  "subtasks": 4,
+  "bid": "1",
+  "resources": [
+      "/home/jacek/example.txt"
+  ],
+  "type": "RUNF",
+  "subtask_timeout": "00:05:00",
+  "name": "Golem Task2",
+  "timeout": "00:05:00"
+}
