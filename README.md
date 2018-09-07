@@ -1,8 +1,8 @@
 # golem_remote
 
-MVP version of library for wrapping Python functions to run on golem.
+MVP version of library for wrapping Python functions to run on golem.  
 
-Work in progress. Working revision: .
+Work in progress. Working revision: `d364ef748aaa94271559f62d274376f559191f74`.  
 
 Install:
  - `git clone git@github.com:golemfactory/golem.git && git checkout runf`
