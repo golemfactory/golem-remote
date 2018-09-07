@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0196468-1f9f-4766-9136-36cb465bc986" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/golem_remote/golem_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/golem_remote/golem_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/golem_remote/golem_remote.py" beforeDir="false" afterPath="$PROJECT_DIR$/golem_remote/golem_remote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_definition/runf.json" beforeDir="false" afterPath="$PROJECT_DIR$/golem_remote/task_definition/runf.json" afterDir="false" />
-    </list>
+    <list default="true" id="a0196468-1f9f-4766-9136-36cb465bc986" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
