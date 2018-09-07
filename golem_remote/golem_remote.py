@@ -55,7 +55,7 @@ def init(host: Host="127.0.0.1",
                     golem_port=port,
                     golem_dir=golem_dir,
                     golemcli=golemcli,
-                    tempdir=Path("./temp/"),
+                    # tempdir=Path("./temp/"),
                     blocking=blocking,
                     timeout=timeout)
     client.initialize_task()

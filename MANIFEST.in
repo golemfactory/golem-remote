@@ -1,0 +1,2 @@
+include golem_remote/task_definition/*
+include README.md

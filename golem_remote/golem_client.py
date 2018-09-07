@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import tempfile
 from abc import ABCMeta, abstractmethod
@@ -111,7 +112,7 @@ def fill_task_definition(template_path: Path,
 
 class GolemClient(GolemClientInterface):
 
-    TASK_DEFINITION_TEMPLATE = Path("./task_definition/runf.json")
+    TASK_DEFINITION_TEMPLATE = "task_definition/runf.json"
 
     def __init__(self,
                  golem_host: Host,
@@ -124,6 +125,8 @@ class GolemClient(GolemClientInterface):
                  blocking: bool=False,
                  timeout: int=30):
         super().__init__()
+
+        print(os.path.dirname(__file__))
         self.golem_host = golem_host
         self.golem_port = golem_port
         self.golem_dir = golem_dir
@@ -133,13 +136,18 @@ class GolemClient(GolemClientInterface):
         self.timeout = timeout
         self.blocking = blocking
 
+        self.task_definition_template_path = Path(
+            os.path.dirname(__file__),
+            self.TASK_DEFINITION_TEMPLATE
+        )
+
         self._tempdir: Path = tempdir \
             if tempdir \
             else tempfile.TemporaryDirectory()
 
         self.task_definition_path = Path(self._tempdir.name) / Path("definition.json")
         fill_task_definition(
-            self.TASK_DEFINITION_TEMPLATE,
+            self.task_definition_template_path,
             queue_host,
             queue_port,
             self.task_definition_path

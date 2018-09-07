@@ -12,5 +12,6 @@ setup(name='golem_remote',
     install_requires=[
         'redis',
         'cloudpickle'
-    ]
+    ],
+    include_package_data=True
 )
