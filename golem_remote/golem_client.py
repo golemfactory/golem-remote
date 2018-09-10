@@ -1,19 +1,22 @@
+import enum
 import json
 import os
 import subprocess
 import tempfile
+import time
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-
-from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
 from typing import Optional, Any, Dict
 from uuid import uuid4 as make_uuid
-import enum
-import time
+
 import cloudpickle as pickle
+
+from golem_remote import config, consts
+from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue
-from .config import PYTHON_PATH
+from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
+
 
 class SubtaskState(enum.Enum):
     running = enum.auto()
@@ -22,7 +25,7 @@ class SubtaskState(enum.Enum):
 
 class GolemClientInterface(metaclass=ABCMeta):
     @abstractmethod
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *_, **__):
         self.subtasks: Dict[SubtaskID, SubtaskState] = {}
         self.task_id: Optional[TaskID] = None
 
@@ -56,7 +59,7 @@ class GolemClientAllMock(GolemClientInterface):
     def initialize_task(self):
         self.task_id = "Task"
 
-    def _run(self, function, args, kwargs):        
+    def _run(self, function, args, kwargs):
         subtask_id = str(make_uuid())
         self._subtasks_results[subtask_id] = function(*args, **kwargs)
         self.subtasks[subtask_id] = SubtaskState.finished
@@ -80,7 +83,7 @@ class GolemClientMockPickle(GolemClientAllMock):
         kwargs = {k: pickle.loads(v) for k, v in kwargs.items()}
         return function(*args, **kwargs)
 
-    def _run(self, function, args, kwargs):        
+    def _run(self, function, args, kwargs):
         subtask_id = str(make_uuid())
         function = pickle.dumps(function)
         args = [pickle.dumps(x) for x in args]
@@ -112,18 +115,16 @@ def fill_task_definition(template_path: Path,
 
 class GolemClient(GolemClientInterface):
 
-    TASK_DEFINITION_TEMPLATE = "task_definition/runf.json"
-
     def __init__(self,
-                 golem_host: Host,
-                 golem_port: Port,
-                 golem_dir: Path,
-                 golemcli: Path,
-                 queue_host: Host="localhost",
-                 queue_port: Port=6379,
-                 tempdir: Path=None,
-                 blocking: bool=False,
-                 timeout: int=30):
+                 golem_host: Host = config.GOLEM_HOST,
+                 golem_port: Port = config.GOLEM_PORT,
+                 golem_dir: Path = config.GOLEM_DIR,
+                 golemcli: Path = config.GOLEMCLI,
+                 queue_host: Host = config.QUEUE_HOST,
+                 queue_port: Port = config.QUEUE_PORT, # 6379,
+                 tempdir: Path = None,
+                 blocking: bool = False,
+                 timeout: int = 30):
         super().__init__()
 
         print(os.path.dirname(__file__))
@@ -138,14 +139,14 @@ class GolemClient(GolemClientInterface):
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__),
-            self.TASK_DEFINITION_TEMPLATE
+            consts.TASK_DEFINITION_TEMPLATE
         )
 
         self._tempdir: Path = tempdir \
             if tempdir \
             else tempfile.TemporaryDirectory()
 
-        self.task_definition_path = Path(self._tempdir.name) / Path("definition.json")
+        self.task_definition_path = Path(self._tempdir.name, "definition.json")
         fill_task_definition(
             self.task_definition_template_path,
             queue_host,
@@ -166,10 +167,10 @@ class GolemClient(GolemClientInterface):
         return stdout
 
     def _build_start_task_cmd(self):
-        return [PYTHON_PATH, str(self.golemcli), "tasks", "create",
-           str(self.task_definition_path),
-           "-a", self.golem_host, "-p", str(self.golem_port),
-        ]
+        return [str(PYTHON_PATH), str(self.golemcli), "tasks", "create",
+                str(self.task_definition_path),
+                "-a", self.golem_host, "-p", str(self.golem_port),
+                ]
         # "-d", str(self.golem_dir)]
 
     def _run(self, function, args, kwargs):
@@ -231,6 +232,7 @@ class MockQueue(Queue):
     def get(self, key):
         print(f"Getting {key}")
         return self.d[key]
+
 
 # this one actually inserts stuff to redis
 # but computes funcs by itself, not using golem

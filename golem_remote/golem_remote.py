@@ -1,11 +1,9 @@
 from functools import wraps
 from pathlib import Path
 
+from golem_remote import config
 from golem_remote.runf_helpers import Host, Port
 from .golem_client import GolemClientInterface, GolemClient
-
-__all__ = ["init", "remote", "get"]
-
 
 client: GolemClientInterface = None
 
@@ -45,8 +43,8 @@ def get(subtask_id):
 
 def init(host: Host="127.0.0.1",
          port: Port=61000,
-         golem_dir: Path=Path("/home/jacek/golem_data/golem4_r"),
-         golemcli: Path=Path("/home/jacek/golem_orig/golemcli.py"),
+         golem_dir: Path=config.GOLEM_DIR,
+         golemcli: Path=config.GOLEMCLI,
          class_=GolemClient,
          blocking=True,
          timeout=30):
@@ -55,7 +53,6 @@ def init(host: Host="127.0.0.1",
                     golem_port=port,
                     golem_dir=golem_dir,
                     golemcli=golemcli,
-                    # tempdir=Path("./temp/"),
                     blocking=blocking,
                     timeout=timeout)
     client.initialize_task()
