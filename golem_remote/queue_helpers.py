@@ -57,6 +57,7 @@ class Queue(_RedisQueue):
     def get(self, key):
         print(f"Getting {key}")
         val = self._db.get(key)
+        print(f"Got {val}")
         if val is None:
             return val
         return val.decode("utf-8")
