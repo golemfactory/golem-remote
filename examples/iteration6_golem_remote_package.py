@@ -9,6 +9,7 @@ from golem_remote.runf_helpers import SubtaskID
 # golem init #
 ##############
 
+
 golem.init(
     class_=GolemClient,
     timeout=300

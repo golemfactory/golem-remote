@@ -122,14 +122,13 @@ class GolemClient(GolemClientInterface):
                  golem_dir: Path=config.GOLEM_DIR,
                  golemcli: Path=config.GOLEMCLI,
                  queue_host: Host=config.QUEUE_HOST,
-                 queue_port: Port=config.QUEUE_PORT, # 6379,
+                 queue_port: Port=config.QUEUE_PORT,
                  tempdir: Path=None,
                  blocking: bool=False,
                  timeout: int=30,
                  number_of_subtasks: int=1):
         super().__init__()
 
-        # print(os.path.dirname(__file__))
         self.golem_host = golem_host
         self.golem_port = golem_port
         self.golem_dir = golem_dir
@@ -149,6 +148,7 @@ class GolemClient(GolemClientInterface):
             else tempfile.TemporaryDirectory()
 
         self.task_definition_path = Path(self._tempdir.name, "definition.json")
+
         fill_task_definition(
             self.task_definition_template_path,
             queue_host,
