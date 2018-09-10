@@ -47,12 +47,14 @@ def init(host: Host="127.0.0.1",
          golemcli: Path=config.GOLEMCLI,
          class_=GolemClient,
          blocking=True,
-         timeout=30):
+         timeout=30,
+         number_of_subtasks: int=1):
     global client
     client = class_(golem_host=host,
                     golem_port=port,
                     golem_dir=golem_dir,
                     golemcli=golemcli,
                     blocking=blocking,
-                    timeout=timeout)
+                    timeout=timeout,
+                    number_of_subtasks=number_of_subtasks)
     client.initialize_task()

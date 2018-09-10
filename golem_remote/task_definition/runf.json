@@ -7,7 +7,7 @@
     "queue_host": "localhost",
     "queue_port": 6379
   },
-  "subtasks": 4,
+  "subtasks": 0,
   "bid": "1",
   "resources": [
       "/home/jacek/example.txt"

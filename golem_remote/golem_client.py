@@ -102,7 +102,8 @@ class GolemClientMockPickle(GolemClientAllMock):
 def fill_task_definition(template_path: Path,
                          queue_host: Host,
                          queue_port: Port,
-                         output_path: Path):
+                         output_path: Path,
+                         number_of_subtasks: int=1):
     with open(str(template_path), "r") as f:
         task_definition = json.load(f)
 
@@ -124,10 +125,11 @@ class GolemClient(GolemClientInterface):
                  queue_port: Port = config.QUEUE_PORT, # 6379,
                  tempdir: Path = None,
                  blocking: bool = False,
-                 timeout: int = 30):
+                 timeout: int = 30,
+                 number_of_subtasks: int=1):
         super().__init__()
 
-        print(os.path.dirname(__file__))
+        # print(os.path.dirname(__file__))
         self.golem_host = golem_host
         self.golem_port = golem_port
         self.golem_dir = golem_dir
@@ -151,14 +153,15 @@ class GolemClient(GolemClientInterface):
             self.task_definition_template_path,
             queue_host,
             queue_port,
-            self.task_definition_path
+            self.task_definition_path,
+            number_of_subtasks
         )
 
         self.queue: Queue = None
 
     def _run_cmd(self, cmd):
 
-        print(f"INFO: running command {' '.join(cmd)}")
+        # print(f"INFO: running command {' '.join(cmd)}")
         process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 
         stdout, stderr = process.communicate()
@@ -194,7 +197,7 @@ class GolemClient(GolemClientInterface):
 
         stdout = self._run_cmd(self._build_start_task_cmd())
         self.task_id = stdout.decode("ascii")[:-1]
-        print(f"Task {self.task_id} started")
+        # print(f"Task {self.task_id} started")
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
 
     # TODO this is a naive implementation
@@ -220,17 +223,17 @@ class MockQueue(Queue):
         self.d = {}
 
     def push(self, key):
-        print(f"Pushing {key} to queue")
+        # print(f"Pushing {key} to queue")
         self.subtasks.append(key)
 
     def set(self, key, value):
         p: SubtaskData = decode_str_to_obj(value)
         res = p.function(*p.args, **p.kwargs)
-        print(f"Setting {key} to {res}")
+        # print(f"Setting {key} to {res}")
         self.d[key] = encode_obj_to_str(res)
 
     def get(self, key):
-        print(f"Getting {key}")
+        # print(f"Getting {key}")
         return self.d[key]
 
 
@@ -249,5 +252,5 @@ class GolemClientQueueMock(GolemClient):
             raise Exception("Task already initialized")
 
         self.task_id = "123"
-        print(f"Task {self.task_id} started")
+        # print(f"Task {self.task_id} started")
         self.queue = MockQueue2(self.task_id)
