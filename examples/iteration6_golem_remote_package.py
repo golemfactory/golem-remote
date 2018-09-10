@@ -1,25 +1,15 @@
 import time
-from pathlib import Path
 from typing import Tuple
 
 import golem_remote.golem_remote as golem
 from golem_remote import GolemClient
-from golem_remote.runf_helpers import SubtaskID, Host, Port
-
-host: Host = "127.0.0.1"
-port: Port = 61000
-golem_dir = Path("/home/jacek/golem_data/golem5_r")
-golemcli = Path("/home/jacek/golem_orig/golemcli.py")
-
+from golem_remote.runf_helpers import SubtaskID
 
 ##############
 # golem init #
 ##############
 
 golem.init(
-    host=host,
-    port=port,
-    golem_dir=golem_dir,
     class_=GolemClient,
     timeout=300
 )
