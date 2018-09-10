@@ -109,7 +109,7 @@ def fill_task_definition(template_path: Path,
 
     task_definition["options"]["queue_host"] = queue_host
     task_definition["options"]["queue_port"] = queue_port
-
+    task_definition["subtasks"] = number_of_subtasks
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
 
@@ -117,15 +117,15 @@ def fill_task_definition(template_path: Path,
 class GolemClient(GolemClientInterface):
 
     def __init__(self,
-                 golem_host: Host = config.GOLEM_HOST,
-                 golem_port: Port = config.GOLEM_PORT,
-                 golem_dir: Path = config.GOLEM_DIR,
-                 golemcli: Path = config.GOLEMCLI,
-                 queue_host: Host = config.QUEUE_HOST,
-                 queue_port: Port = config.QUEUE_PORT, # 6379,
-                 tempdir: Path = None,
-                 blocking: bool = False,
-                 timeout: int = 30,
+                 golem_host: Host=config.GOLEM_HOST,
+                 golem_port: Port=config.GOLEM_PORT,
+                 golem_dir: Path=config.GOLEM_DIR,
+                 golemcli: Path=config.GOLEMCLI,
+                 queue_host: Host=config.QUEUE_HOST,
+                 queue_port: Port=config.QUEUE_PORT, # 6379,
+                 tempdir: Path=None,
+                 blocking: bool=False,
+                 timeout: int=30,
                  number_of_subtasks: int=1):
         super().__init__()
 

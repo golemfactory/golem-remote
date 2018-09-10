@@ -28,6 +28,5 @@ class A():
         self.a = a
 
 a = A({"abcd": None})
-
 assert decode_str_to_obj(encode_obj_to_str(a)).a == {"abcd": None}
-print("Assert: True")
+# print("Assert: True")
