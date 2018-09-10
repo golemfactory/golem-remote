@@ -48,7 +48,7 @@ class Queue(_RedisQueue):
         return key, self.get(key)
 
     def pop_nowait(self):
-        return super().pop(False)
+        return self.pop(False)
 
     def set(self, key, item):
         print(f"Setting {key} to {item}")
