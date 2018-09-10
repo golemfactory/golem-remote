@@ -47,7 +47,7 @@ class Queue(_RedisQueue):
         key = super().pop(block, timeout)
         return key, self.get(key)
 
-    def get_nowait(self):
+    def pop_nowait(self):
         super().pop(False)
 
     def set(self, key, item):
