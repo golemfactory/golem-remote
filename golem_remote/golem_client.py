@@ -9,8 +9,6 @@ from pathlib import Path
 from typing import Optional, Any, Dict
 from uuid import uuid4 as make_uuid
 
-import cloudpickle as pickle
-
 from golem_remote import config, consts
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
@@ -51,54 +49,6 @@ class GolemClientInterface(metaclass=ABCMeta):
         pass
 
 
-class GolemClientAllMock(GolemClientInterface):
-    def __init__(self, *args, **kwargs):
-        super().__init__()
-        self._subtasks_results = {}
-
-    def initialize_task(self):
-        self.task_id = "Task"
-
-    def _run(self, function, args, kwargs):
-        subtask_id = str(make_uuid())
-        self._subtasks_results[subtask_id] = function(*args, **kwargs)
-        self.subtasks[subtask_id] = SubtaskState.finished
-        return subtask_id
-
-    def get(self, subtask_id):
-        return self._subtasks_results[subtask_id]
-
-
-class GolemClientMockPickle(GolemClientAllMock):
-    def __init__(self, *args, **kwargs):
-        super().__init__()
-        self._subtasks_results = {}
-
-    def initialize_task(self):
-        self.task_id = "Task"
-
-    def __run_pickled(self, function, args, kwargs):
-        function = pickle.loads(function)
-        args = [pickle.loads(x) for x in args]
-        kwargs = {k: pickle.loads(v) for k, v in kwargs.items()}
-        return function(*args, **kwargs)
-
-    def _run(self, function, args, kwargs):
-        subtask_id = str(make_uuid())
-        function = pickle.dumps(function)
-        args = [pickle.dumps(x) for x in args]
-        kwargs = {k: pickle.dumps(v) for k, v in kwargs.items()}
-        self._subtasks_results[subtask_id] = function(*args, **kwargs)
-        self.subtasks[subtask_id] = SubtaskState.finished
-        return subtask_id
-
-    def get(self, subtask_id):
-        return self._subtasks_results[subtask_id]
-
-
-# class GolemClientProcess(GolemClient):
-#     pass
-
 def fill_task_definition(template_path: Path,
                          queue_host: Host,
                          queue_port: Port,
@@ -112,6 +62,10 @@ def fill_task_definition(template_path: Path,
     task_definition["subtasks"] = number_of_subtasks
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
+
+
+def get_result_key(subtask_id: SubtaskID) -> str:
+    return f"{subtask_id}-OUT"
 
 
 class GolemClient(GolemClientInterface):
@@ -177,7 +131,7 @@ class GolemClient(GolemClientInterface):
         # "-d", str(self.golem_dir)]
 
     def _run(self, function, args, kwargs):
-        subtask_id = make_uuid()
+        subtask_id = str(make_uuid())
         parameters = SubtaskData(
             function=function,
             args=args,
@@ -206,51 +160,12 @@ class GolemClient(GolemClientInterface):
         blocking = blocking if blocking is not None else self.blocking
         timeout = timeout if timeout is not None else self.timeout
 
-        result = self.queue.get(f"{subtask_id}-OUT")
+        result = self.queue.get(get_result_key(subtask_id))
         runtime = 0
         while not result and blocking and runtime < timeout:
-            result = self.queue.get(f"{subtask_id}-OUT")
+            result = self.queue.get(get_result_key(subtask_id))
             time.sleep(0.5)
             runtime += 0.5
 
         result = decode_str_to_obj(result)
         return result
-
-
-class MockQueue(Queue):
-    def __init__(self, *args, **kwargs):
-        self.subtasks = []
-        self.d = {}
-
-    def push(self, key):
-        # print(f"Pushing {key} to queue")
-        self.subtasks.append(key)
-
-    def set(self, key, value):
-        p: SubtaskData = decode_str_to_obj(value)
-        res = p.function(*p.args, **p.kwargs)
-        # print(f"Setting {key} to {res}")
-        self.d[key] = encode_obj_to_str(res)
-
-    def get(self, key):
-        # print(f"Getting {key}")
-        return self.d[key]
-
-
-# this one actually inserts stuff to redis
-# but computes funcs by itself, not using golem
-class MockQueue2(Queue):
-    def set(self, key, value):
-        p: SubtaskData = decode_str_to_obj(value)
-        res = p.function(*p.args, **p.kwargs)
-        super().set(key, encode_obj_to_str(res))
-
-
-class GolemClientQueueMock(GolemClient):
-    def initialize_task(self):
-        if self.task_id:
-            raise Exception("Task already initialized")
-
-        self.task_id = "123"
-        # print(f"Task {self.task_id} started")
-        self.queue = MockQueue2(self.task_id)

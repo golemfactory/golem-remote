@@ -29,29 +29,32 @@ class _RedisQueue:
         return self._queue_size() == 0
 
     def pop(self, block: bool, timeout: int=Optional[int]) -> Optional[str]:
-        """Remove and return an item from the queue.
+        """Remove and return an val from the queue.
 
         If optional args block is true and timeout is None (the default), block
-        if necessary until an item is available."""
+        if necessary until an val is available."""
         if block:
-            item = self._db.blpop(self.key, timeout=timeout)
+            val = self._db.blpop(self.key, timeout=timeout)
         else:
-            item = self._db.lpop(self.key)
+            val = self._db.lpop(self.key)
 
-        if item:
-            item = item.decode("utf-8")
-        logger.info(f"Popping - key: {self.key}, value: {item}")
-        return item
+        if val:
+            val = val.decode("utf-8")
+        logger.info(f"Popping - key: {self.key}, value: {val}")
+        return val
 
-    def push(self, item: str):
-        """Put item into the queue."""
-        logger.info(f"Pushing - key: {self.key}, value: {item}")
-        self._db.rpush(self.key, item)
+    def push(self, val: str):
+        """Put val into the queue."""
+        logger.info(f"Pushing - key: {self.key}, value: {val}")
+        self._db.rpush(self.key, val)
 
-    def set(self, key: str, item: str):
-        self._db.set(key, item)
+    def set(self, key: str, val: str):
+        """Set a key to value."""
+        self._db.set(key, val)
 
     def get(self, key: str) -> Optional[str]:
+        """Get a value from the database."""
+
         val = self._db.get(key)
         if val is not None:
             val = val.decode("utf-8")
