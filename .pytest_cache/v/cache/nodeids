@@ -1,8 +1,0 @@
-[
-  "tests/test_queue_helpers.py::TestRedisQueue::test_empty",
-  "tests/test_queue_helpers.py::TestRedisQueue::test_get_set",
-  "tests/test_queue_helpers.py::TestRedisQueue::test_init",
-  "tests/test_queue_helpers.py::TestRedisQueue::test_push_pop_block",
-  "tests/test_queue_helpers.py::TestRedisQueue::test_push_pop_noblock",
-  "tests/test_queue_helpers.py::TestQueue::test_pop_noblock"
-]
