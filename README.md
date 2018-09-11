@@ -7,12 +7,21 @@ Work in progress. Working revision: `d364ef748aaa94271559f62d274376f559191f74` h
 Install:
  - `git clone git@github.com:golemfactory/golem.git && git checkout runf`
  - `pip install git+https://github.com/inexxt/golem_remote.git` 
- - Change path to python in `golem_remote/config.py`
+ - Set config options in `golem_remote/config.py`
 
 Run:
- - Run requestor as ```python golemapp.py --log-level INFO --datadir golem_data_r/ --accept-terms --protocol_id 97 --password "k123@" -p localhost:40103 -r localhost:61000```
- - Run provider as ```python golemapp.py --log-level INFO --datadir golem_data_p --accept-terms --protocol_id 97 --password "k123@" -p localhost:40102 -r localhost:61001```
+ - Run requestor (for example: ```
+   python golemapp.py --log-level INFO --datadir golem_data_r/ 
+   --accept-terms --protocol_id 97 --password "k123@" 
+   -p localhost:40103 -r localhost:61000```)
+ - Run provider (for example ```
+   python golemapp.py --log-level INFO --datadir golem_data_p 
+   --accept-terms --protocol_id 97 --password "k123@" 
+   -p localhost:40102 -r localhost:61001```)
  - Run redis on `localhost:6379`
- - Run task as `python iteration6_golem_remote_package.py`
- - Watch the screen as `Assert: True` appears :)
+ - Run your task on Golem (for example: `python iteration6_golem_remote_package.py`)
 
+Testing:
+ - Run `pytest` in the package directory
+ - If the redis tests don't pass, ensure you don't have another redis instance running on `localhost:6379`
+ 
