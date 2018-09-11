@@ -1,5 +1,6 @@
 import enum
 import json
+import logging
 import os
 import subprocess
 import tempfile
@@ -14,6 +15,8 @@ from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue
 from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
+
+logger = logging.getLogger("golem_remote")
 
 
 class SubtaskState(enum.Enum):
@@ -37,7 +40,7 @@ class GolemClientInterface(metaclass=ABCMeta):
 
     ####################################################################
     @abstractmethod
-    def initialize_task(self):
+    def initialize_task(self) -> None:
         pass
 
     @abstractmethod
@@ -45,7 +48,10 @@ class GolemClientInterface(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get(self, subtask_id: SubtaskID) -> Any:
+    def get(self,
+            subtask_id: SubtaskID,
+            blocking: Optional[bool] = True,
+            timeout: Optional[float] = None) -> Any:
         pass
 
 
@@ -53,7 +59,7 @@ def fill_task_definition(template_path: Path,
                          queue_host: Host,
                          queue_port: Port,
                          output_path: Path,
-                         number_of_subtasks: int=1):
+                         number_of_subtasks: int = 1):
     with open(str(template_path), "r") as f:
         task_definition = json.load(f)
 
@@ -68,19 +74,28 @@ def get_result_key(subtask_id: SubtaskID) -> str:
     return f"{subtask_id}-OUT"
 
 
-class GolemClient(GolemClientInterface):
+def _run_cmd(cmd):
+    logger.info(f"Running command {' '.join(cmd)}")
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 
+    stdout, stderr = process.communicate()
+    if stderr:
+        raise Exception(f"Something went wrong: {stderr}")
+    return stdout
+
+
+class GolemClient(GolemClientInterface):
     def __init__(self,
-                 golem_host: Host=config.GOLEM_HOST,
-                 golem_port: Port=config.GOLEM_PORT,
-                 golem_dir: Path=config.GOLEM_DIR,
-                 golemcli: Path=config.GOLEMCLI,
-                 queue_host: Host=config.QUEUE_HOST,
-                 queue_port: Port=config.QUEUE_PORT,
-                 tempdir: Path=None,
-                 blocking: bool=False,
-                 timeout: int=30,
-                 number_of_subtasks: int=1):
+                 golem_host: Host = config.GOLEM_HOST,
+                 golem_port: Port = config.GOLEM_PORT,
+                 golem_dir: Path = config.GOLEM_DIR,
+                 golemcli: Path = config.GOLEMCLI,
+                 queue_host: Host = config.QUEUE_HOST,
+                 queue_port: Port = config.QUEUE_PORT,
+                 tempdir: Path = None,
+                 blocking: bool = False,
+                 timeout: float = 30,
+                 number_of_subtasks: int = 1) -> None:
         super().__init__()
 
         self.golem_host = golem_host
@@ -93,50 +108,39 @@ class GolemClient(GolemClientInterface):
         self.blocking = blocking
 
         self.task_definition_template_path = Path(
-            os.path.dirname(__file__),
-            consts.TASK_DEFINITION_TEMPLATE
-        )
+            os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
 
         self._tempdir: Path = tempdir \
             if tempdir \
-            else tempfile.TemporaryDirectory()
+            else Path(tempfile.TemporaryDirectory().name)
 
-        self.task_definition_path = Path(self._tempdir.name, "definition.json")
+        self.task_definition_path = Path(self._tempdir, "definition.json")
 
-        fill_task_definition(
-            self.task_definition_template_path,
-            queue_host,
-            queue_port,
-            self.task_definition_path,
-            number_of_subtasks
-        )
+        fill_task_definition(self.task_definition_template_path, queue_host, queue_port,
+                             self.task_definition_path, number_of_subtasks)
 
-        self.queue: Queue = None
-
-    def _run_cmd(self, cmd):
-
-        # print(f"INFO: running command {' '.join(cmd)}")
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-
-        stdout, stderr = process.communicate()
-        if stderr:
-            raise Exception(f"Something went wrong: {stderr}")
-        return stdout
+        self.queue: Optional[Queue] = None
 
     def _build_start_task_cmd(self):
-        return [str(PYTHON_PATH), str(self.golemcli), "tasks", "create",
-                str(self.task_definition_path),
-                "-a", self.golem_host, "-p", str(self.golem_port),
-                ]
-        # "-d", str(self.golem_dir)]
+        return [
+            str(PYTHON_PATH),
+            str(self.golemcli),
+            "tasks",
+            "create",
+            str(self.task_definition_path),
+            "-a",
+            self.golem_host,
+            "-p",
+            str(self.golem_port),
+            # "-d", str(self.golem_dir)]
+        ]
 
     def _run(self, function, args, kwargs):
+        if self.queue is None:
+            raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
+
         subtask_id = str(make_uuid())
-        parameters = SubtaskData(
-            function=function,
-            args=args,
-            kwargs=kwargs
-        )
+        parameters = SubtaskData(function=function, args=args, kwargs=kwargs)
         parameters = encode_obj_to_str(parameters)
 
         self.queue.set(subtask_id, parameters)
@@ -149,23 +153,30 @@ class GolemClient(GolemClientInterface):
         if self.task_id:
             raise Exception("Task already initialized")
 
-        stdout = self._run_cmd(self._build_start_task_cmd())
+        stdout = _run_cmd(self._build_start_task_cmd())
         self.task_id = stdout.decode("ascii")[:-1]
         # print(f"Task {self.task_id} started")
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
 
     # TODO this is a naive implementation
     # later, there should be something like async_redis here
-    def get(self, subtask_id: SubtaskID, blocking=None, timeout=None):
+    def get(self,
+            subtask_id: SubtaskID,
+            blocking: Optional[bool] = True,
+            timeout: Optional[float] = None):
+        if self.queue is None:
+            raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
+
         blocking = blocking if blocking is not None else self.blocking
         timeout = timeout if timeout is not None else self.timeout
 
         result = self.queue.get(get_result_key(subtask_id))
-        runtime = 0
+        runtime: float = 0
         while not result and blocking and runtime < timeout:
             result = self.queue.get(get_result_key(subtask_id))
             time.sleep(0.5)
             runtime += 0.5
 
-        result = decode_str_to_obj(result)
+        if result is not None:
+            result = decode_str_to_obj(result)
         return result

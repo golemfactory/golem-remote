@@ -52,7 +52,7 @@ class TestRedisQueue(TestWithRedis):
 
         r.push("defg")
         self.assertFalse(r.empty())
-        r.pop(False)
+        r._pop(False)
         self.assertTrue(r.empty())
 
     def test_push_pop_noblock(self):
@@ -64,11 +64,11 @@ class TestRedisQueue(TestWithRedis):
 
         res = []
         for _ in range(len(vals)):
-            res.append(r.pop(False))
+            res.append(r._pop(False))
 
         self.assertEqual(res, vals)
 
-        val = r.pop(False)
+        val = r._pop(False)
         self.assertIsNone(val)
 
     def test_push_pop_block(self):
@@ -80,11 +80,11 @@ class TestRedisQueue(TestWithRedis):
 
         res = []
         for _ in range(len(vals)):
-            res.append(r.pop(False))
+            res.append(r._pop(False))
 
         self.assertEqual(res, vals)
 
-        val = r.pop(False)
+        val = r._pop(False)
         self.assertIsNone(val)
 
         # Types checking

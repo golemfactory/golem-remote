@@ -10,13 +10,11 @@ logger = logging.getLogger("golem_remote")
 
 class _RedisQueue:
     """Simple Queue with Redis Backend
-    code inspired by
-    http://peter-hoffmann.com/2012/python-simple-queue-redis-queue.html
+    code inspired by http://peter-hoffmann.com/2012/python-simple-queue-redis-queue.html
     """
 
-    def __init__(self, name: str, host: Host = "127.0.0.1", port: Port = 6379):
-        logger.info(f"Creating connection to {name} "
-                    f"(host: {host}, port: {port}")
+    def __init__(self, name: str, host: Host = "127.0.0.1", port: Port = 6379) -> None:
+        logger.info(f"Creating connection to {name} (host: {host}, port: {port}")
         self._db = redis.Redis(host=host, port=port, encoding='utf-8')
         self.key = f"{name}"
 
@@ -28,7 +26,7 @@ class _RedisQueue:
         """Return True if the queue is empty, False otherwise."""
         return self._queue_size() == 0
 
-    def pop(self, block: bool, timeout: int=Optional[int]) -> Optional[str]:
+    def _pop(self, block: bool = True, timeout: Optional[int] = 30) -> Optional[str]:
         """Remove and return an val from the queue.
 
         If optional args block is true and timeout is None (the default), block
@@ -65,9 +63,12 @@ class _RedisQueue:
 
 class Queue(_RedisQueue):
 
-    def pop(self, block: bool=True, timeout: Optional[int]=None) -> Tuple[QueueID, Optional[str]]:
-        key = super().pop(block, timeout)
+    def pop(self, block: bool = True, timeout: Optional[int] = None) \
+            -> Tuple[Optional[QueueID], Optional[str]]:
+        key = super()._pop(block, timeout)
+        if key is None:
+            return None, None
         return key, self.get(key)
 
-    def pop_nowait(self) -> Tuple[QueueID, Optional[str]]:
+    def pop_nowait(self) -> Tuple[Optional[QueueID], Optional[str]]:
         return self.pop(False)
