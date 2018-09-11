@@ -1,0 +1,4 @@
+{
+  "tests/Test_queue_helpers.py::TestRedisQueue::test_empty": true,
+  "tests/Test_queue_helpers.py::TestRedisQueue::test_init": true
+}
