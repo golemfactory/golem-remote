@@ -24,7 +24,8 @@ class Poly:
 golem.init(
     class_=GolemClient,
     timeout=300,
-    number_of_subtasks=N
+    number_of_subtasks=N,
+    clear_db=True
 )
 
 
@@ -38,7 +39,8 @@ best = fmin(
     space=hp.uniform('x', -10, 10),
     algo=tpe.suggest,
     max_evals=N,
-    verbose=1
+    verbose=1,
+    max_queue_len=N/2
 )
 
 

@@ -91,7 +91,8 @@ class GolemClient(GolemClientInterface):
                  tempdir: Path = None,
                  blocking: bool = False,
                  timeout: float = 30,
-                 number_of_subtasks: int = 1) -> None:
+                 number_of_subtasks: int = 1,
+                 clear_db: bool = True) -> None:
         super().__init__()
 
         self.golem_host = golem_host
@@ -102,6 +103,7 @@ class GolemClient(GolemClientInterface):
         self.queue_port = queue_port
         self.timeout = timeout
         self.blocking = blocking
+        self.clear_db = clear_db
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
@@ -157,6 +159,8 @@ class GolemClient(GolemClientInterface):
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
+        if self.clear_db:
+            self.queue.clear_db()
 
     # TODO this is a naive implementation
     # later, there should be something like async_redis here

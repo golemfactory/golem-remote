@@ -27,7 +27,7 @@ passwd = "12345"
 # but at the same time allow to read from /etc/...
 input_files: Optional[List[Path]] = [Path("somefile")]
 
-# timeout in seconds, if empty it is INFTY
+# timeout in seconds, if is_empty it is INFTY
 timeout: Optional[int] = 300
 
 # user can either call special golem.finish() function 

@@ -48,12 +48,12 @@ class TestRedisQueue(TestWithRedis):
 
     def test_empty(self):
         r = _RedisQueue("abcd")
-        self.assertTrue(r.empty())
+        self.assertTrue(r.is_empty())
 
         r.push("defg")
-        self.assertFalse(r.empty())
+        self.assertFalse(r.is_empty())
         r._pop(False)
-        self.assertTrue(r.empty())
+        self.assertTrue(r.is_empty())
 
     def test_push_pop_noblock(self):
         r = _RedisQueue("abcd")

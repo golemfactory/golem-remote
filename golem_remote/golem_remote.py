@@ -51,8 +51,8 @@ def init(host: Host = "127.0.0.1",
          class_=GolemClient,
          blocking=True,
          timeout=30,
-         number_of_subtasks: int = 1):
-
+         number_of_subtasks: int = 1,
+         clear_db: bool = True):
     global client  # pylint: disable=global-statement
     client = class_(
         golem_host=host,
@@ -61,5 +61,6 @@ def init(host: Host = "127.0.0.1",
         golemcli=golemcli,
         blocking=blocking,
         timeout=timeout,
-        number_of_subtasks=number_of_subtasks)
+        number_of_subtasks=number_of_subtasks,
+        clear_db=clear_db)
     client.initialize_task()  # type: ignore

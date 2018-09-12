@@ -26,9 +26,17 @@ class _RedisQueue:
         """Return the approximate size of the queue."""
         return self._db.llen(self.key)
 
-    def empty(self) -> bool:
-        """Return True if the queue is empty, False otherwise."""
+    def is_empty(self) -> bool:
+        """Return True if the queue is is_empty, False otherwise."""
         return self._queue_size() == 0
+
+    def clear_queue(self):
+        """Removes all items from the queue"""
+        self._db.delete([self.key])
+
+    def clear_db(self):
+        """Removes all items from the database"""
+        self._db.flushdb()
 
     def _pop(self, block: bool = True, timeout: Optional[int] = 30) -> Optional[str]:
         """Remove and return an val from the queue.
