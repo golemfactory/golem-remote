@@ -17,7 +17,7 @@ from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
 from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
 
-logger = logging.getLogger(LOGGER_NAME)
+logger = logging # temporary solution - should be logging.getLogger(LOGGER_NAME)
 
 
 class SubtaskState(enum.Enum):
