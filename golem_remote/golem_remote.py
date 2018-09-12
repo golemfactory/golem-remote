@@ -10,6 +10,9 @@ from .golem_client import GolemClientInterface, GolemClient
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
 
 
+enable_std_output()
+
+
 class RemoteFunction():
     # pylint: disable=redefined-outer-name
     def __init__(self, function, client: GolemClientInterface) -> None:
@@ -66,4 +69,3 @@ def init(host: Host = "127.0.0.1",
         clear_db=clear_db)
     client.initialize_task()  # type: ignore
 
-    enable_std_output()

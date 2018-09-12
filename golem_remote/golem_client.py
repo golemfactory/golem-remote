@@ -70,7 +70,7 @@ def fill_task_definition(template_path: Path,
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
 
-    logger.info(f"Task definition built: {task_definition}")
+    logger.info(f"Task definition built: {json.dumps(task_definition, indent=4, sort_keys=True)}")
 
 
 def _run_cmd(cmd):

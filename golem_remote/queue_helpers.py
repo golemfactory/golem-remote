@@ -6,7 +6,7 @@ import redis
 from golem_remote.consts import LOGGER_NAME
 from golem_remote.runf_helpers import Host, Port, QueueID, SubtaskID
 
-logger = logging # temporary solution - should be logging.getLogger(LOGGER_NAME)
+logger = logging  # temporary solution - should be logging.getLogger(LOGGER_NAME)
 
 
 def get_result_key(subtask_id: SubtaskID) -> str:
