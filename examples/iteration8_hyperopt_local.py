@@ -1,19 +1,8 @@
 from hyperopt import fmin, tpe, hp
 
-import golem_remote.golem_remote as golem
-from golem_remote import GolemClient
-
-N = 100
-
-golem.init(
-    class_=GolemClient,
-    timeout=3000,
-    number_of_subtasks=N,
-    clear_db=True
-)
+N = 30
 
 
-@golem.remote
 def fn(x: float):
     from typing import List
 
@@ -30,12 +19,12 @@ def fn(x: float):
                 value = value * point + w
             return value
 
-    return Poly([2,-4,3,1,0,2]).evaluate(x)
+    return Poly([4,-3,-1,0,2]).evaluate(x)
 
 
 best = fmin(
-    fn=lambda x: golem.get(fn.remote(x)),
-    space=hp.uniform('x', -10, 10),
+    fn=lambda x: fn(x),
+    space=hp.uniform('x', -2, 2),
     algo=tpe.suggest,
     max_evals=N,
     verbose=1,

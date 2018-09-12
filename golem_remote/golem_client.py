@@ -69,6 +69,8 @@ def fill_task_definition(template_path: Path,
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
 
+    logger.info(f"Task definition built: {task_definition}")
+
 
 def _run_cmd(cmd):
     logger.info(f"Running command {' '.join(cmd)}")
@@ -120,7 +122,7 @@ class GolemClient(GolemClientInterface):
 
         fill_task_definition(self.task_definition_template_path, queue_host, queue_port,
                              self.task_definition_path, number_of_subtasks)
-
+        logger.info(f"Task definition saved in {self.task_definition_path}")
         self.queue: Optional[Queue] = None
 
     def _build_start_task_cmd(self):
