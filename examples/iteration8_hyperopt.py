@@ -3,7 +3,7 @@ from hyperopt import fmin, tpe, hp
 import golem_remote.golem_remote as golem
 from golem_remote import GolemClient
 
-N = 100
+N = 80
 
 golem.init(
     class_=GolemClient,

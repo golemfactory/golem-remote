@@ -11,12 +11,13 @@ from typing import Optional, Any, Dict
 from uuid import uuid4 as make_uuid
 
 from golem_remote import config, consts
+from golem_remote.consts import LOGGER_NAME
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
 from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
 
-logger = logging.getLogger("golem_remote")
+logger = logging.getLogger(LOGGER_NAME)
 
 
 class SubtaskState(enum.Enum):

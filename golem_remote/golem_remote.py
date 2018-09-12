@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Optional
 
 from golem_remote import config
+from golem_remote.loggging import enable_std_output
 from golem_remote.runf_helpers import Host, Port
 from .golem_client import GolemClientInterface, GolemClient
 
@@ -64,3 +65,5 @@ def init(host: Host = "127.0.0.1",
         number_of_subtasks=number_of_subtasks,
         clear_db=clear_db)
     client.initialize_task()  # type: ignore
+
+    enable_std_output()
