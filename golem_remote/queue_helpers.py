@@ -45,6 +45,7 @@ class _RedisQueue:
         if necessary until an val is available."""
         if block:
             val = self._db.blpop(self.key, timeout=timeout)
+            val = val[1]
         else:
             val = self._db.lpop(self.key)
 

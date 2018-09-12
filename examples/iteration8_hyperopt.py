@@ -7,20 +7,6 @@ from golem_remote import GolemClient
 
 N = 10
 
-class Poly:
-    def __init__(self, l: List[float]=None):
-        if l is None:
-            self.l = []
-        else:
-            self.l = l
-
-    def evaluate(self, point: float):
-        value = 0
-        for w in self.l:
-            value = value * point + w
-        return value
-
-
 golem.init(
     class_=GolemClient,
     timeout=300,
@@ -31,6 +17,19 @@ golem.init(
 
 @golem.remote
 def fn(x: float):
+    class Poly:
+        def __init__(self, l: List[float] = None):
+            if l is None:
+                self.l = []
+            else:
+                self.l = l
+
+        def evaluate(self, point: float):
+            value = 0
+            for w in self.l:
+                value = value * point + w
+            return value
+
     return Poly([2,-4,3,1,0,2]).evaluate(x)
 
 
@@ -40,7 +39,7 @@ best = fmin(
     algo=tpe.suggest,
     max_evals=N,
     verbose=1,
-    max_queue_len=N/2
+    max_queue_len=N//2
 )
 
 
