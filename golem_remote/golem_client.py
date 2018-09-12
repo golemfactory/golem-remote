@@ -114,6 +114,8 @@ class GolemClient(GolemClientInterface):
             if tempdir \
             else Path(tempfile.TemporaryDirectory().name)
 
+        print(self._tempdir)
+        
         self.task_definition_path = Path(self._tempdir, "definition.json")
 
         fill_task_definition(self.task_definition_template_path, queue_host, queue_port,
