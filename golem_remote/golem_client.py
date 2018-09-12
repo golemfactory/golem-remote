@@ -110,12 +110,14 @@ class GolemClient(GolemClientInterface):
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
 
-        self._tempdir: Path = tempdir \
-            if tempdir \
-            else Path(tempfile.TemporaryDirectory().name)
+        if tempdir:
+            self._tempdir: Path = tempdir
+        else:
+            # ugly, but we have to prevent the TemporaryDirectory object from being
+            # garbage-collected - and in the same time keep tempdir interface
+            self.__tempdir = tempfile.TemporaryDirectory()
+            self._tempdir = Path(self.__tempdir.name)
 
-        print(self._tempdir)
-        
         self.task_definition_path = Path(self._tempdir, "definition.json")
 
         fill_task_definition(self.task_definition_template_path, queue_host, queue_port,
