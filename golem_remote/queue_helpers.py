@@ -3,9 +3,13 @@ from typing import Tuple, Optional
 
 import redis
 
-from golem_remote.runf_helpers import Host, Port, QueueID
+from golem_remote.runf_helpers import Host, Port, QueueID, SubtaskID
 
 logger = logging.getLogger("golem_remote")
+
+
+def get_result_key(subtask_id: SubtaskID) -> str:
+    return f"{subtask_id}-OUT"
 
 
 class _RedisQueue:

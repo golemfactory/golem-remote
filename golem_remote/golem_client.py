@@ -13,7 +13,7 @@ from uuid import uuid4 as make_uuid
 from golem_remote import config, consts
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
-from .queue_helpers import Queue
+from .queue_helpers import Queue, get_result_key
 from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
 
 logger = logging.getLogger("golem_remote")
@@ -70,10 +70,6 @@ def fill_task_definition(template_path: Path,
         json.dump(task_definition, f)
 
 
-def get_result_key(subtask_id: SubtaskID) -> str:
-    return f"{subtask_id}-OUT"
-
-
 def _run_cmd(cmd):
     logger.info(f"Running command {' '.join(cmd)}")
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE)
@@ -114,7 +110,7 @@ class GolemClient(GolemClientInterface):
             self._tempdir: Path = tempdir
         else:
             # ugly, but we have to prevent the TemporaryDirectory object from being
-            # garbage-collected - and in the same time keep tempdir interface
+            # garbage-collected - and in the same time keep tempdir interface as Path
             self.__tempdir = tempfile.TemporaryDirectory()
             self._tempdir = Path(self.__tempdir.name)
 
@@ -136,7 +132,7 @@ class GolemClient(GolemClientInterface):
             self.golem_host,
             "-p",
             str(self.golem_port),
-            # "-d", str(self.golem_dir)]
+            # "-d", str(self.golem_dir)]  # TODO uncomment it when rpc_auth will be merged
         ]
 
     def _run(self, function, args, kwargs):
@@ -158,8 +154,8 @@ class GolemClient(GolemClientInterface):
             raise Exception("Task already initialized")
 
         stdout = _run_cmd(self._build_start_task_cmd())
-        self.task_id = stdout.decode("ascii")[:-1]
-        # print(f"Task {self.task_id} started")
+        self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
+        logger.info(f"Task {self.task_id} started")
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
 
     # TODO this is a naive implementation
