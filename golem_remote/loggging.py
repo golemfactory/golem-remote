@@ -5,8 +5,8 @@ from golem_remote.consts import LOGGER_NAME
 
 
 def enable_std_output():
-    print("abcd")
-    root = logging.getLogger(LOGGER_NAME)
+    print("abcdde")
+    root = logging.getLogger()
     root.setLevel(logging.INFO)
 
     ch = logging.StreamHandler(sys.stdout)

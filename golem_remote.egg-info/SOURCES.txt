@@ -1,9 +1,13 @@
+MANIFEST.in
+README.md
 setup.py
 golem_remote/__init__.py
 golem_remote/config.py
+golem_remote/consts.py
 golem_remote/encoding.py
 golem_remote/golem_client.py
 golem_remote/golem_remote.py
+golem_remote/loggging.py
 golem_remote/queue_helpers.py
 golem_remote/runf_helpers.py
 golem_remote.egg-info/PKG-INFO
@@ -12,3 +16,4 @@ golem_remote.egg-info/dependency_links.txt
 golem_remote.egg-info/not-zip-safe
 golem_remote.egg-info/requires.txt
 golem_remote.egg-info/top_level.txt
+golem_remote/task_definition/runf.json
