@@ -5,6 +5,7 @@ from golem_remote.consts import LOGGER_NAME
 
 
 def enable_std_output():
+    print("abcd")
     root = logging.getLogger(LOGGER_NAME)
     root.setLevel(logging.INFO)
 
