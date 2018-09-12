@@ -15,5 +15,5 @@
   "type": "RUNF",
   "subtask_timeout": "00:00:30",
   "name": "Golem Task2",
-  "timeout": "05:00:00"
+  "timeout": "00:10:00"
 }
