@@ -51,7 +51,7 @@ def spawn_head():
 
 
 def spawn_worker():
-    p = subprocess.Popen(["hyperopt-mongo-worker",
+    p = subprocess.Popen(["/home/jacek/anaconda3/bin/hyperopt-mongo-worker",
                           "--mongo=localhost:27017/foo_db",
                           "--poll-interval=0.1"])
     print("abcd")
