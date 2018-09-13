@@ -5,7 +5,6 @@ from golem_remote.consts import LOGGER_NAME
 
 
 def enable_std_output():
-    print("abcddfe")
     # logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
     root = logging.getLogger()

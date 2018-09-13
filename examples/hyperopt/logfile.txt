@@ -846,3 +846,99 @@ INFO (root): Getting - key: 70086e27-92b7-4291-bc1f-ead83e7de602-OUT, value: Non
 INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
 INFO (hyperopt.mongoexp): job exception: 2
 INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmp86cibbiu/definition.json
+INFO (root): Task definition saved in /tmp/tmpv4j7quwt/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmp86cibbiu/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpv4j7quwt/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpnohl_tk5/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpnohl_tk5/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpzp_iv403/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpzp_iv403/definition.json -a 127.0.0.1 -p 61000
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (hyperopt.mongoexp): job exception: 2

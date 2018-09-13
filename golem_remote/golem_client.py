@@ -17,7 +17,7 @@ from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
 from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
 
-logger = logging # temporary solution - should be logging.getLogger(LOGGER_NAME)
+logger = logging  # temporary solution - should be logging.getLogger(LOGGER_NAME)
 
 
 class SubtaskState(enum.Enum):
@@ -91,7 +91,6 @@ class GolemClient(GolemClientInterface):
                  golemcli: Path = config.GOLEMCLI,
                  queue_host: Host = config.QUEUE_HOST,
                  queue_port: Port = config.QUEUE_PORT,
-                 tempdir: Path = None,
                  blocking: bool = False,
                  timeout: float = 30,
                  number_of_subtasks: int = 1,
@@ -109,32 +108,20 @@ class GolemClient(GolemClientInterface):
         self.blocking = blocking
         self.clear_db = clear_db
         self.task_id = task_id
+        self.number_of_subtasks = number_of_subtasks
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
 
-        if tempdir:
-            self._tempdir: Path = tempdir
-        else:
-            # ugly, but we have to prevent the TemporaryDirectory object from being
-            # garbage-collected - and in the same time keep tempdir interface as Path
-            self.__tempdir = tempfile.TemporaryDirectory()
-            self._tempdir = Path(self.__tempdir.name)
-
-        self.task_definition_path = Path(self._tempdir, "definition.json")
-
-        fill_task_definition(self.task_definition_template_path, queue_host, queue_port,
-                             self.task_definition_path, number_of_subtasks)
-        logger.info(f"Task definition saved in {self.task_definition_path}")
         self.queue: Optional[Queue] = None
 
-    def _build_start_task_cmd(self):
+    def _build_start_task_cmd(self, task_definition_path: Path):
         return [
             str(PYTHON_PATH),
             str(self.golemcli),
             "tasks",
             "create",
-            str(self.task_definition_path),
+            str(task_definition_path),
             "-a",
             self.golem_host,
             "-p",
@@ -161,7 +148,19 @@ class GolemClient(GolemClientInterface):
             logger.warning("Task already initialized")
             return
 
-        stdout = _run_cmd(self._build_start_task_cmd())
+        with tempfile.TemporaryDirectory() as tmp:
+            task_definition_path = Path(tmp.name, "definition.json")
+
+            fill_task_definition(
+                self.task_definition_template_path,
+                self.queue_host,
+                self.queue_port,
+                task_definition_path,
+                self.number_of_subtasks
+            )
+            logger.info(f"Task definition saved in {task_definition_path}")
+            stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
+        
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
 
