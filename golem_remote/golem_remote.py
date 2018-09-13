@@ -4,7 +4,7 @@ from typing import Optional
 
 from golem_remote import config
 from golem_remote.loggging import enable_std_output
-from golem_remote.runf_helpers import Host, Port
+from golem_remote.runf_helpers import Host, Port, TaskID
 from .golem_client import GolemClientInterface, GolemClient
 
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
@@ -56,7 +56,8 @@ def init(host: Host = "127.0.0.1",
          blocking=True,
          timeout=30,
          number_of_subtasks: int = 1,
-         clear_db: bool = True):
+         clear_db: bool = True,
+         task_id: TaskID = None):
     global client  # pylint: disable=global-statement
     client = class_(
         golem_host=host,
@@ -66,6 +67,7 @@ def init(host: Host = "127.0.0.1",
         blocking=blocking,
         timeout=timeout,
         number_of_subtasks=number_of_subtasks,
-        clear_db=clear_db)
+        clear_db=clear_db,
+        task_id=task_id)
     client.initialize_task()  # type: ignore
 

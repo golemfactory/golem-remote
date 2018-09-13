@@ -95,7 +95,8 @@ class GolemClient(GolemClientInterface):
                  blocking: bool = False,
                  timeout: float = 30,
                  number_of_subtasks: int = 1,
-                 clear_db: bool = True) -> None:
+                 clear_db: bool = True,
+                 task_id: TaskID = None) -> None:
         super().__init__()
 
         self.golem_host = golem_host
@@ -107,6 +108,7 @@ class GolemClient(GolemClientInterface):
         self.timeout = timeout
         self.blocking = blocking
         self.clear_db = clear_db
+        self.task_id = task_id
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
@@ -154,16 +156,32 @@ class GolemClient(GolemClientInterface):
         self.subtasks[subtask_id] = SubtaskState.running
         return subtask_id
 
-    def initialize_task(self):
+    def _create_golem_task(self):
         if self.task_id:
-            raise Exception("Task already initialized")
+            logger.warning("Task already initialized")
+            return
 
         stdout = _run_cmd(self._build_start_task_cmd())
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
+
+    def _create_queue(self):
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
+
+    def initialize_task(self):
+        self._create_golem_task()
+        self._create_queue()
+
         if self.clear_db:
             self.queue.clear_db()
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        del state["queue"]
+
+    def __setstate__(self, state):
+        self.__dict__.update(state)
+        self._create_queue()
 
     # TODO this is a naive implementation
     # later, there should be something like async_redis here

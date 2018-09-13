@@ -1,3 +1,4 @@
+import hyperopt
 from hyperopt import fmin, tpe, hp
 
 import golem_remote.golem_remote as golem

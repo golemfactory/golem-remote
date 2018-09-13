@@ -1,0 +1,848 @@
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (hyperopt.mongoexp): job exception: You forgot to golem.init()
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmp95kyplsw/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmp95kyplsw/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpuv4m7_lt/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpuv4m7_lt/definition.json -a 127.0.0.1 -p 61000
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (hyperopt.mongoexp): job exception: 15
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpsocfhnjr/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpsocfhnjr/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpk_y_2wft/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpk_y_2wft/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Task fa97fb9a-b75a-11e8-8001-0d0e8a7d48cb started
+INFO (root): Creating connection to fa97fb9a-b75a-11e8-8001-0d0e8a7d48cb (host: 127.0.0.1, port: 6379
+INFO (root): Pushing - key: fa97fb9a-b75a-11e8-8001-0d0e8a7d48cb, value: 3538c9df-00cb-4d01-8abc-e1b459aa3353
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task fade50f8-b75a-11e8-bd78-0d0e8a7d48cb started
+INFO (root): Creating connection to fade50f8-b75a-11e8-bd78-0d0e8a7d48cb (host: 127.0.0.1, port: 6379
+INFO (root): Pushing - key: fade50f8-b75a-11e8-bd78-0d0e8a7d48cb, value: d0f8838f-c341-4bec-90e6-652955691b12
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpxrb9fiu2/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpxrb9fiu2/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task fb89a8c8-b75a-11e8-ac72-0d0e8a7d48cb started
+INFO (root): Creating connection to fb89a8c8-b75a-11e8-ac72-0d0e8a7d48cb (host: 127.0.0.1, port: 6379
+INFO (root): Pushing - key: fb89a8c8-b75a-11e8-ac72-0d0e8a7d48cb, value: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 4b79e982-b0e8-4237-8a6a-33126dfcdbd8-OUT, value: {"r": "gASVCgAAAAAAAABHwCIJ8PmiWe4u"}
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmppgy8ffaf/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmppgy8ffaf/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task 247f9e9e-b75b-11e8-91fd-0d0e8a7d48cb started
+INFO (root): Creating connection to 247f9e9e-b75b-11e8-91fd-0d0e8a7d48cb (host: 127.0.0.1, port: 6379
+INFO (root): Pushing - key: 247f9e9e-b75b-11e8-91fd-0d0e8a7d48cb, value: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: 8adb87fe-2c0b-4dd8-aaed-1949ace743bd-OUT, value: {"r": "gASVCgAAAAAAAABHQFfbqUwbgFYu"}
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpdsuruamw/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpdsuruamw/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpp1zfwj_j/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpp1zfwj_j/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpy_p2a01o/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpy_p2a01o/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task  started
+INFO (root): Creating connection to  (host: 127.0.0.1, port: 6379
+INFO (hyperopt.mongoexp): job exception: Task is not running
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpph4a_54u/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpph4a_54u/definition.json -a 127.0.0.1 -p 61000
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (root): Getting - key: d0f8838f-c341-4bec-90e6-652955691b12-OUT, value: None
+INFO (root): Getting - key: 3538c9df-00cb-4d01-8abc-e1b459aa3353-OUT, value: None
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): job exception: 2
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
+INFO (hyperopt.mongoexp): job exception: 2
+INFO (hyperopt.mongoexp): job exception: 2
+INFO (hyperopt.mongoexp): job exception: init() got an unexpected keyword argument 'task_id'
+INFO (root): Task definition built: {
+    "bid": "1",
+    "name": "Golem Task2",
+    "options": {
+        "compositing": false,
+        "format": "",
+        "output_path": "/home/jacek/outputs/",
+        "queue_host": "127.0.0.1",
+        "queue_port": 6379,
+        "sample_per_pixel": ""
+    },
+    "resources": [
+        "/home/jacek/example.txt"
+    ],
+    "subtask_timeout": "00:00:30",
+    "subtasks": 100,
+    "timeout": "00:10:00",
+    "type": "RUNF"
+}
+INFO (root): Task definition saved in /tmp/tmpwm97dlx1/definition.json
+INFO (root): Running command /home/jacek/golemenv/bin/python3 /home/jacek/golem_orig/golemcli.py tasks create /tmp/tmpwm97dlx1/definition.json -a 127.0.0.1 -p 61000
+INFO (hyperopt.mongoexp): job exception: init() got an unexpected keyword argument 'task_id'
+INFO (root): Task 0927b102-b75e-11e8-9757-7f390e0ffe04 started
+INFO (root): Creating connection to 0927b102-b75e-11e8-9757-7f390e0ffe04 (host: 127.0.0.1, port: 6379
+INFO (root): Pushing - key: 0927b102-b75e-11e8-9757-7f390e0ffe04, value: 70086e27-92b7-4291-bc1f-ead83e7de602
+INFO (root): Getting - key: 70086e27-92b7-4291-bc1f-ead83e7de602-OUT, value: None
+INFO (root): Getting - key: 70086e27-92b7-4291-bc1f-ead83e7de602-OUT, value: None
+INFO (hyperopt.mongoexp): Caught signal 2, shutting down.
+INFO (hyperopt.mongoexp): job exception: 2
+INFO (hyperopt.mongoexp): Caught signal 15, shutting down.
