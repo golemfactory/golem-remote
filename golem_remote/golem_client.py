@@ -145,11 +145,11 @@ class GolemClient(GolemClientInterface):
 
     def _create_golem_task(self):
         if self.task_id:
-            logger.warning("Task already initialized")
+            logger.warning(f"Task already initialized with {self.task_id}")
             return
 
         with tempfile.TemporaryDirectory() as tmp:
-            task_definition_path = Path(tmp.name, "definition.json")
+            task_definition_path = Path(tmp, "definition.json")
 
             fill_task_definition(
                 self.task_definition_template_path,
@@ -160,7 +160,7 @@ class GolemClient(GolemClientInterface):
             )
             logger.info(f"Task definition saved in {task_definition_path}")
             stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
-        
+
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
 

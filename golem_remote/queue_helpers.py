@@ -46,6 +46,8 @@ class _RedisQueue:
         if necessary until an val is available."""
         if block:
             val = self._db.blpop(self.key, timeout=timeout)
+            if val is None:  # Would be nice to have a Maybe monad here
+                return None
             val = val[1]
         else:
             val = self._db.lpop(self.key)

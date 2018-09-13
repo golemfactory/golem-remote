@@ -12,8 +12,8 @@ import golem_remote as golem
 
 trials = MongoTrials('mongo://localhost:27017/foo_db/jobs', exp_key=str(uuid4()))
 
-N = 100
-NUM_WORKERS = 3
+N = 4
+NUM_WORKERS = 1
 
 params = dict(
     class_=golem.GolemClient,
