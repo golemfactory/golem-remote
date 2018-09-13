@@ -170,6 +170,7 @@ class GolemClient(GolemClientInterface):
     def initialize_task(self):
         self._create_golem_task()
         self._create_queue()
+
         if self.clear_db:
             logger.info("Clearing database")
             self.queue.clear_db()

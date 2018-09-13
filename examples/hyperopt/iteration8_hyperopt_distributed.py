@@ -19,17 +19,17 @@ params = dict(
     class_=golem.GolemClient,
     timeout=3000,
     number_of_subtasks=N,
-    clear_db=True
+    clear_db=False
 )
 
 TASK_ID = golem.init(**params)
 
-# with open("/home/jacek/temp.id", "w") as f:
-#     f.write(TASK_ID)
+with open("/home/jacek/temp.id", "w") as f:
+    f.write(TASK_ID)
 
 def fn(x: float):
-    # with open("/home/jacek/tempid", "r") as f:
-    #     TASK_ID = f.read()
+    with open("/home/jacek/tempid", "r") as f:
+        TASK_ID = f.read()
 
     golem.init(**{"task_id": TASK_ID, **params})
     @golem.remote
