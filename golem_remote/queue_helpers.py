@@ -60,10 +60,11 @@ class _RedisQueue:
     def push(self, val: str):
         """Put val into the queue."""
         logger.info(f"Pushing - key: {self.key}, value: {val}")
-        self._db.rpush(self.key, val)
+        self._db.lpush(self.key, val)
 
     def set(self, key: str, val: str):
         """Set a key to value."""
+        logger.info(f"Setting - key: {key}, value: {val}")
         self._db.set(key, val)
 
     def get(self, key: str) -> Optional[str]:

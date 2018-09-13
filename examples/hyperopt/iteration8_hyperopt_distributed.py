@@ -12,8 +12,8 @@ import golem_remote as golem
 
 trials = MongoTrials('mongo://localhost:27017/foo_db/jobs', exp_key=str(uuid4()))
 
-N = 4
-NUM_WORKERS = 1
+N = 2
+NUM_WORKERS = 2
 
 params = dict(
     class_=golem.GolemClient,
@@ -24,8 +24,13 @@ params = dict(
 
 TASK_ID = golem.init(**params)
 
+# with open("/home/jacek/temp.id", "w") as f:
+#     f.write(TASK_ID)
 
 def fn(x: float):
+    # with open("/home/jacek/tempid", "r") as f:
+    #     TASK_ID = f.read()
+
     golem.init(**{"task_id": TASK_ID, **params})
     @golem.remote
     def f(x):

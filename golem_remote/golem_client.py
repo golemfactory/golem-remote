@@ -94,7 +94,7 @@ class GolemClient(GolemClientInterface):
                  blocking: bool = False,
                  timeout: float = 30,
                  number_of_subtasks: int = 1,
-                 clear_db: bool = True,
+                 clear_db: bool = False,
                  task_id: TaskID = None) -> None:
         super().__init__()
 
@@ -170,9 +170,10 @@ class GolemClient(GolemClientInterface):
     def initialize_task(self):
         self._create_golem_task()
         self._create_queue()
-
         if self.clear_db:
+            logger.info("Clearing database")
             self.queue.clear_db()
+            self.clear_db = False  # do it only once
 
     def __getstate__(self):
         state = self.__dict__.copy()
