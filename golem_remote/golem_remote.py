@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Optional
 
 from golem_remote import config
-from golem_remote.loggging import enable_std_output
+from golem_remote.logging import enable_std_output
 from golem_remote.runf_helpers import Host, Port, TaskID
 from .golem_client import GolemClientInterface, GolemClient
 
