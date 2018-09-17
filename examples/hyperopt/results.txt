@@ -1,5 +1,0 @@
-N=100, WORKERS=3, locally
-
-Result: [{'x': 2.652891895937799}]
-[2]    8284 killed     python iteration8_hyperopt_distributed.py
-python iteration8_hyperopt_distributed.py  1,34s user 0,09s system 1% cpu 1:27,67 total

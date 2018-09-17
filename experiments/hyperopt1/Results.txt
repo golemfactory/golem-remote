@@ -1,0 +1,16 @@
+Experiment with hyperopt polynomial minimalization:
+
+N = 50 (subtasks)
+NUM_WORKERS = 4 (mongo workers)
+
+Locally:
+
+Result: [{'x': 2.6734989004618406}]
+[2]    27151 killed     python iteration8_hyperopt_locally.py
+python iteration8_hyperopt_locally.py  1,50s user 0,14s system 1% cpu 1:27,74 total
+
+On Golem - requestor locally, one provider locally, second provider on different machine in the local network:
+
+{"x": 2.735295648581249}%
+[2]    1867 killed     python iteration8_hyperopt_distributed.py
+python iteration8_hyperopt_distributed.py  2,39s user 0,51s system 1% cpu 2:28,19 total

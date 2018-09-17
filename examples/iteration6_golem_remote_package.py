@@ -33,9 +33,12 @@ def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") \
 ##################
 
 res_id1: SubtaskID = func.remote(1, 2, kwarg1="abcd")
+res_id2: SubtaskID = func.remote(1, 2, kwarg1="abcd")
 
 # SubtaskIDs work as in ray
 res1 = golem.get(res_id1)
 print(f"Result: {res1}")
+res1 = golem.get(res_id1)
+
 assert res1 == (1 + 2, "abcd" + "def", secret_sauce)
 print("Assert: True")

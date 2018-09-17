@@ -1,5 +1,9 @@
 #!/bin/bash
 
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+pkill redis-server > /dev/null
+redis-server > /dev/null 2>&1 &
+
 set -e
 
 echo "Formatting code"

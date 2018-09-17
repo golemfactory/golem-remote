@@ -32,7 +32,8 @@ class TestWithRedis(TestCase):
     @classmethod
     def tearDownClass(cls):
         os.killpg(os.getpgid(cls.redis_process.pid), signal.SIGTERM)
-        os.remove("./dump.rdb")
+        if os.path.exists("./dump.rdb"):
+            os.remove("./dump.rdb")
 
 class TestRedisQueue(TestWithRedis):
     def test_init(self):
@@ -66,7 +67,7 @@ class TestRedisQueue(TestWithRedis):
         for _ in range(len(vals)):
             res.append(r._pop(False))
 
-        self.assertEqual(res, vals)
+        self.assertEqual(list(reversed(res)), vals)
 
         val = r._pop(False)
         self.assertIsNone(val)
@@ -82,7 +83,7 @@ class TestRedisQueue(TestWithRedis):
         for _ in range(len(vals)):
             res.append(r._pop(False))
 
-        self.assertEqual(res, vals)
+        self.assertEqual(list(reversed(res)), vals)
 
         val = r._pop(False)
         self.assertIsNone(val)

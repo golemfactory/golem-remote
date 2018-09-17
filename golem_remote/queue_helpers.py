@@ -3,7 +3,6 @@ from typing import Tuple, Optional
 
 import redis
 
-from golem_remote.consts import LOGGER_NAME
 from golem_remote.runf_helpers import Host, Port, QueueID, SubtaskID
 
 logger = logging  # temporary solution - should be logging.getLogger(LOGGER_NAME)

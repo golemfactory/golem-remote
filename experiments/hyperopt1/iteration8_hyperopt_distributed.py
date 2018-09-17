@@ -25,10 +25,7 @@ params = dict(
 
 TASK_ID = golem.init(**params)
 
-
-# for some reason, hyperopt doesn't serialize closures
-# so we need to save the TASK_ID in file
-with open("/home/jacek/temp.id", "w") as f:
+with open("/home/jacek/temp.id", "w") as f:  # for some reason, hyperopt doesn't serialize closures
     f.write(TASK_ID)
 
 def fn(x: float):

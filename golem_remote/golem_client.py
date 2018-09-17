@@ -7,11 +7,10 @@ import tempfile
 import time
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-from typing import Optional, Any, Dict
+from typing import Optional, Any, Dict, Set
 from uuid import uuid4 as make_uuid
 
 from golem_remote import config, consts
-from golem_remote.consts import LOGGER_NAME
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
@@ -60,17 +59,32 @@ def fill_task_definition(template_path: Path,
                          queue_host: Host,
                          queue_port: Port,
                          output_path: Path,
-                         number_of_subtasks: int = 1):
+                         number_of_subtasks: int = 1,
+                         task_files: Set[Path] = None):
     with open(str(template_path), "r") as f:
         task_definition = json.load(f)
 
     task_definition["options"]["queue_host"] = queue_host
     task_definition["options"]["queue_port"] = queue_port
     task_definition["subtasks"] = number_of_subtasks
+    task_definition["resources"] = [str(f) for f in task_files] if task_files else []
+
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
 
     logger.info(f"Task definition built: {json.dumps(task_definition, indent=4, sort_keys=True)}")
+
+
+def initialize_task_files(tmp: Path, task_files: Set[Path]) -> Dict[Path, Path]:
+    """Takes a list of task files and a temporary directory and creates symlinks to the
+    specified files there."""
+
+    dest_to_local = {}
+    for f in task_files:
+        dest_to_local[f] = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f))
+        os.symlink(str(f), str(Path(tmp, dest_to_local[f])))
+
+    return dest_to_local
 
 
 def _run_cmd(cmd):
@@ -95,7 +109,8 @@ class GolemClient(GolemClientInterface):
                  timeout: float = 30,
                  number_of_subtasks: int = 1,
                  clear_db: bool = False,
-                 task_id: TaskID = None) -> None:
+                 task_id: TaskID = None,
+                 task_files: Set[Path] = None) -> None:
         super().__init__()
 
         self.golem_host = golem_host
@@ -109,6 +124,7 @@ class GolemClient(GolemClientInterface):
         self.clear_db = clear_db
         self.task_id = task_id
         self.number_of_subtasks = number_of_subtasks
+        self.task_files = task_files
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
@@ -151,13 +167,10 @@ class GolemClient(GolemClientInterface):
         with tempfile.TemporaryDirectory() as tmp:
             task_definition_path = Path(tmp, "definition.json")
 
-            fill_task_definition(
-                self.task_definition_template_path,
-                self.queue_host,
-                self.queue_port,
-                task_definition_path,
-                self.number_of_subtasks
-            )
+            dest_description, dest_to_local = initialize_task_files(tmp.name, self.task_files)
+            fill_task_definition(self.task_definition_template_path, self.queue_host,
+                                 self.queue_port, task_definition_path, self.number_of_subtasks,
+                                 set(dest_to_local.values()) | {dest_description})
             logger.info(f"Task definition saved in {task_definition_path}")
             stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
 

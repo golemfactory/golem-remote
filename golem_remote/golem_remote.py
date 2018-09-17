@@ -9,7 +9,6 @@ from .golem_client import GolemClientInterface, GolemClient
 
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
 
-
 enable_std_output()
 
 
@@ -70,4 +69,4 @@ def init(host: Host = "127.0.0.1",
         clear_db=clear_db,
         task_id=task_id)
     client.initialize_task()  # type: ignore
-    return client.task_id
+    return client.task_id  # type: ignore

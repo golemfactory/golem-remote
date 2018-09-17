@@ -23,7 +23,7 @@ class GolemClientAllMock(GolemClientInterface):
         self.subtasks[subtask_id] = SubtaskState.finished
         return subtask_id
 
-    def get(self, subtask_id):
+    def get(self, subtask_id, blocking = None, timeout = None):
         return self._subtasks_results[subtask_id]
 
 
