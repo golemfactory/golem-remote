@@ -13,3 +13,4 @@ golem_remote/__pycache__
 .pytest_cache/
 dump.rdb
 .mypy_cache
+*.egg-info/
