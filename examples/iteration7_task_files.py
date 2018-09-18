@@ -31,22 +31,23 @@ secret_sauce = "Secret"
 
 @golem.remote
 def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") \
-        -> Tuple[int, str, str]:
+        -> Tuple[int, str, str, str]:
     time.sleep(1)  # expensive call
-    print(f"Running func: {arg1} {arg2} {kwarg1} {kwarg2}")
-    return (arg1 + arg2, kwarg1 + kwarg2, secret_sauce)
+    with open("./abcd.aaa.txt", "r") as f:
+        c = f.read()
+
+    print(f"Running func: {arg1} {arg2} {kwarg1} {kwarg2} {c}")
+    return (arg1 + arg2, kwarg1 + kwarg2, secret_sauce, c)
 
 ##################
 # function calls #
 ##################
 
 res_id1: SubtaskID = func.remote(1, 2, kwarg1="abcd")
-res_id2: SubtaskID = func.remote(1, 2, kwarg1="abcd")
 
 # SubtaskIDs work as in ray
 res1 = golem.get(res_id1)
 print(f"Result: {res1}")
-res1 = golem.get(res_id1)
 
-assert res1 == (1 + 2, "abcd" + "def", secret_sauce)
+assert res1 == (1 + 2, "abcd" + "def", secret_sauce, "Wstąpiłem na działo")
 print("Assert: True")

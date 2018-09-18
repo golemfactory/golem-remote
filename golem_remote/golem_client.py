@@ -14,7 +14,7 @@ from golem_remote import config, consts
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
-from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID
+from .runf_helpers import SubtaskID, SubtaskData, Host, Port, TaskID, SubtaskParams
 
 logger = logging  # temporary solution - should be logging.getLogger(LOGGER_NAME)
 
@@ -30,12 +30,11 @@ class GolemClientInterface(metaclass=ABCMeta):
         self.subtasks: Dict[SubtaskID, SubtaskState] = {}
         self.task_id: Optional[TaskID] = None
 
-    # how to type it??
-    def run_function(self, function, args, kwargs) -> SubtaskID:
+    def run_function(self, data: SubtaskData) -> SubtaskID:
         if not self.task_id:
             raise Exception("Task is not running")
 
-        subtask_id = self._run(function, args, kwargs)
+        subtask_id = self._run(data)
         return subtask_id
 
     ####################################################################
@@ -44,7 +43,7 @@ class GolemClientInterface(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def _run(self, function, args, kwargs) -> SubtaskID:
+    def _run(self, data: SubtaskData) -> SubtaskID:
         pass
 
     @abstractmethod
@@ -145,15 +144,14 @@ class GolemClient(GolemClientInterface):
             # "-d", str(self.golem_dir)]  # TODO uncomment it when rpc_auth will be merged
         ]
 
-    def _run(self, function, args, kwargs):
+    def _run(self, data: SubtaskData):
         if self.queue is None:
             raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
 
         subtask_id = str(make_uuid())
-        parameters = SubtaskData(function=function, args=args, kwargs=kwargs)
-        parameters = encode_obj_to_str(parameters)
+        data = encode_obj_to_str(data)
 
-        self.queue.set(subtask_id, parameters)
+        self.queue.set(subtask_id, data)
         self.queue.push(subtask_id)
 
         self.subtasks[subtask_id] = SubtaskState.running

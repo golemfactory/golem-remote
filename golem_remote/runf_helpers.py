@@ -1,4 +1,5 @@
-from typing import NamedTuple, List, Dict, Callable, Any
+from pathlib import Path
+from typing import NamedTuple, List, Dict, Callable, Any, Tuple
 
 SubtaskID = str
 QueueID = str
@@ -8,11 +9,21 @@ Host = str
 Port = int
 
 
+# meta-parameters for golem
+class SubtaskParams(NamedTuple):
+    # the base directory that paths should be expanded relative to
+    # e.g. if in the function user reads ("./aa/bb"), then golem has to know
+    # how to expand ".".
+    original_dir: Path
+
+
 # TODO should be typed differently
 class SubtaskData(NamedTuple):
-    args: List[Any]
+    args: Tuple[...]
     kwargs: Dict[str, Any]
     function: Callable[..., Any]
+    params: SubtaskParams
+
 
 
 class SubtaskDefinition(NamedTuple):

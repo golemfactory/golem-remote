@@ -1,10 +1,10 @@
 from functools import wraps
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Set
 
 from golem_remote import config
 from golem_remote.logging import enable_std_output
-from golem_remote.runf_helpers import Host, Port, TaskID
+from golem_remote.runf_helpers import Host, Port, TaskID, SubtaskParams, SubtaskData
 from .golem_client import GolemClientInterface, GolemClient
 
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
@@ -21,7 +21,14 @@ class RemoteFunction():
     # TODO should have the same signature as f
     # but for now we'll leave it like this
     def remote(self, *args, **kwargs):
-        subtask_id = client.run_function(self.function, args, kwargs)
+        subtask_id = client.run_function(
+            SubtaskData(
+                function=self.function,
+                args=args,
+                kwargs=kwargs,
+                params=SubtaskParams(original_dir=Path(".").absolute())
+            )
+        )
         return subtask_id
 
 
@@ -56,7 +63,8 @@ def init(host: Host = "127.0.0.1",
          timeout=30,
          number_of_subtasks: int = 1,
          clear_db: bool = False,
-         task_id: TaskID = None) -> TaskID:
+         task_id: TaskID = None,
+         task_files: Optional[Set[Path]] = None) -> TaskID:
     global client  # pylint: disable=global-statement
     client = class_(
         golem_host=host,
@@ -67,6 +75,7 @@ def init(host: Host = "127.0.0.1",
         timeout=timeout,
         number_of_subtasks=number_of_subtasks,
         clear_db=clear_db,
-        task_id=task_id)
+        task_id=task_id,
+        task_files=task_files)
     client.initialize_task()  # type: ignore
     return client.task_id  # type: ignore
