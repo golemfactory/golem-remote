@@ -77,6 +77,7 @@ def fill_task_definition(template_path: Path,
 def initialize_task_files(tmp: Path, task_files: Set[Path]) -> Dict[Path, Path]:
     """Takes a list of task files and a temporary directory and creates symlinks to the
     specified files there."""
+    os.mkdir(os.path.join(tmp, consts.GOLEM_TASK_FILES_DIR))
 
     dest_to_local = {}
     for f in task_files:
