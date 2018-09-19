@@ -25,5 +25,7 @@ cd ~/golem_remote/examples
 sleep 12
 
 PYTHON_PATH=/home/jacek/anaconda3/bin/python3
-$PYTHON_PATH iteration6_golem_remote_package.py
+#$PYTHON_PATH iteration6_golem_remote_package.py
+$PYTHON_PATH iteration7_task_files.py
+
 echo "Done"
