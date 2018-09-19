@@ -59,14 +59,14 @@ def fill_task_definition(template_path: Path,
                          queue_port: Port,
                          output_path: Path,
                          number_of_subtasks: int = 1,
-                         task_files: Set[Path] = None):
+                         task_files_dir: Path = None):
     with open(str(template_path), "r") as f:
         task_definition = json.load(f)
 
     task_definition["options"]["queue_host"] = queue_host
     task_definition["options"]["queue_port"] = queue_port
     task_definition["subtasks"] = number_of_subtasks
-    task_definition["resources"] = [str(f) for f in task_files] if task_files else []
+    task_definition["resources"] = str(task_files_dir) if task_files_dir else []
 
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
@@ -74,17 +74,14 @@ def fill_task_definition(template_path: Path,
     logger.info(f"Task definition built: {json.dumps(task_definition, indent=4, sort_keys=True)}")
 
 
-def initialize_task_files(tmp: Path, task_files: Set[Path]) -> Dict[Path, Path]:
+def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
     """Takes a list of task files and a temporary directory and creates symlinks to the
     specified files there."""
     os.mkdir(os.path.join(tmp, consts.GOLEM_TASK_FILES_DIR))
 
-    dest_to_local = {}
     for f in task_files:
-        dest_to_local[f] = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f))
-        os.symlink(str(f), str(Path(tmp, dest_to_local[f])))
-
-    return dest_to_local
+        dest_path = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f))
+        os.symlink(str(f), str(Path(tmp, dest_path)))
 
 
 def _run_cmd(cmd):
@@ -166,10 +163,11 @@ class GolemClient(GolemClientInterface):
         with tempfile.TemporaryDirectory() as tmp:
             task_definition_path = Path(tmp, "definition.json")
 
-            dest_to_local = initialize_task_files(tmp, self.task_files)
+            initialize_task_files(tmp, self.task_files)
             fill_task_definition(self.task_definition_template_path, self.queue_host,
                                  self.queue_port, task_definition_path, self.number_of_subtasks,
-                                 set(dest_to_local.values()))
+                                 task_files_dir=Path(tmp))
+
             logger.info(f"Task definition saved in {task_definition_path}")
             stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
 
