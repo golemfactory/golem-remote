@@ -165,7 +165,7 @@ class GolemClient(GolemClientInterface):
         with tempfile.TemporaryDirectory() as tmp:
             task_definition_path = Path(tmp, "definition.json")
 
-            dest_description, dest_to_local = initialize_task_files(tmp.name, self.task_files)
+            dest_description, dest_to_local = initialize_task_files(tmp, self.task_files)
             fill_task_definition(self.task_definition_template_path, self.queue_host,
                                  self.queue_port, task_definition_path, self.number_of_subtasks,
                                  set(dest_to_local.values()) | {dest_description})

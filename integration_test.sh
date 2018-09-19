@@ -1,6 +1,8 @@
 #!/bin/bash
 
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+trap "trap - SIGTERM && kill -- -$$ && rm -rf ./examples/abcd" SIGINT SIGTERM EXIT
+
+
 
 pkill redis-server > /dev/null
 
