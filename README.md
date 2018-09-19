@@ -5,111 +5,39 @@ MVP version of library for wrapping Python functions to run on golem.
 Work in progress. Working revision: `d364ef748aaa94271559f62d274376f559191f74` here and `379e140c726c59bf1b80e5e61304ec5f27be7bc5` in `golemfactory/golem@runf`.  
 
 ### Description
-The goal of this library is to provide wrappers analogous to these in [Ray](https://github.com/ray-project/ray). This is what is should look like from the user's perspective:
+The goal of this library is to provide wrappers analogous to these in [Ray](https://github.com/ray-project/ray). This is how it should look like from the users perspective:
+
+Without Golem:
 ```python
-import golem_remote as golem
+import time
 
+def f(x):
+    time.wait(30) # really expensive call
+    return 2*x
 
-################
-# task details #
-################
-
-input_files: Optional[List[Path]] = [Path("somefile")]
-
-timeout: Optional[int] = 300
-
-# user can either call special golem.finish() function 
-# or allow auto closing of files after this many
-max_subtasks: Optional[int] = 10
-
-# these should be detected from environment
-# but if not detected properly, this option allows to overwrite it  
-needed_packages: Optional[List[str]] = ["tqdm=4.25.0"]
-
-##############
-# golem init #
-##############
-
-golem.init(
-    timeout=timeout,
-    input_files=input_files,
-    needed_packages=needed_packages
-)
-
-
-#######################
-# function definition #
-#######################
-
-func_timeout: Optional[int] = 30 
-
-# optional list of files that should be saved during computation
-# and returned later
-output_files: Optional[List[Path]] = []
-
-@golem.remote(func_timeout=func_timeout)
-def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") -> Tuple[int, str]:
-    time.sleep(1)  # expensive call    
-    return (arg1 + arg2, kwarg1 + kwarg2)
-
-##################
-# function calls #
-##################
-
-# all options are possible to overwrite during function call
-res_id1: golem.ObjectID = func.remote(1, 2, kwarg1="abcd", func_timeout=some_other_timeout)  # consistent with ray
-res_id2: golem.ObjectID = func.remote(3, 4, kwarg1="xyz")
-
-
-res1 = golem.get(res_id1)
-assert res1 == (1 + 2, "abcd" + "def")
-
-
-@golem.remote
-def func2(arg: Tuple[int, str]) -> Tuple[int, str]:
-    time.sleep(1)  # expensive call
-    return (arg[0] * 2, arg[1] * 2)
-
-
-# but we can also do that
-res_id3 = func2.remote(res_id2)
-res3 = golem.get(res_id3)
-
-assert res3 = (3 * 4 * 2, ("xyz" + "def") * 2)
-
-##############
-# filesystem #
-##############
-
-poem = """
-I saw the best minds of my generation
-destroyed by madness,
-starving hysterical naked
-"""
-
-with open("infile", "w") as f:
-    f.write(poem)
-
-
-input_file = Path("infile")  # it is possible to include dirs
-output_file = Path("outfile")  # it is possible to include dirs
-
-# custom input and output files for functions
-@golem.remote(input_files=[input_file], output_files=[output_file])
-def func3() -> None:
-    # some files manipulation
-    with open("infile", "r") as f:
-        contents = f.read()
-    with open("outfile", "w") as f:
-        f.write(contents)
-    return
-
-with open("outfile", "r") as f:
-    contents = f.read()
-
-assert contents == poem
+results = []
+for i in range(100):
+    results.append(f(i))
 ```
 
+With Golem:
+```python
+import time
+import golem_remote as golem
+
+golem.init()
+
+@golem.remote
+def f(x):
+    time.wait(30) # really expensive call
+    return 2*x
+
+results_futures = []
+for i in range(100):
+    results_futures.append(f.remote(i))  # non-blocking call
+
+results = golem.get(results_futures)  # blocking call
+```
 
 ### Installation:
  - `git clone git@github.com:golemfactory/golem.git && git checkout runf`
