@@ -19,11 +19,10 @@ class SubtaskParams(NamedTuple):
 
 # TODO should be typed differently
 class SubtaskData(NamedTuple):
-    args: Tuple[...]
+    args: Tuple[Any, ...]
     kwargs: Dict[str, Any]
     function: Callable[..., Any]
     params: SubtaskParams
-
 
 
 class SubtaskDefinition(NamedTuple):

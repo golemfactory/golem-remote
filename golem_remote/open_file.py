@@ -35,4 +35,3 @@ def open_file(original_dir: str,
             return orig_open(file, *args, **kwargs)  # type: ignore
 
     return _open
-

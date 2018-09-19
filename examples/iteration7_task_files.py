@@ -39,6 +39,7 @@ def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") \
     print(f"Running func: {arg1} {arg2} {kwarg1} {kwarg2} {c}")
     return (arg1 + arg2, kwarg1 + kwarg2, secret_sauce, c)
 
+
 ##################
 # function calls #
 ##################
