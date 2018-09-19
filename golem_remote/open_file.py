@@ -18,12 +18,12 @@ from .consts import GOLEM_RESOURCES_DIR, GOLEM_TASK_FILES_DIR, HASH
 orig_open: Callable[..., io.IOBase] = None
 
 
-def open_file(original_dir: str,
+def open_file(original_dir: Path,
               task_files_dir: str = os.path.join(GOLEM_RESOURCES_DIR, GOLEM_TASK_FILES_DIR)):
     def _open(file, *args, **kwargs) -> io.IOBase:
         file = Path(file)
         if not file.is_absolute():
-            file = f"{original_dir}/{file[1:]}"
+            file = f"{str(original_dir)}/{file[1:]}"
         available_files = list(os.listdir(task_files_dir))
         if HASH(file) in available_files:
             # pylint: disable=not-callable
