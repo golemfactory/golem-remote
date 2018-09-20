@@ -3,7 +3,7 @@
 MVP version of library for wrapping Python functions to run on golem.  
 
 Work in progress. Working revision: `d364ef748aaa94271559f62d274376f559191f74` here and `379e140c726c59bf1b80e5e61304ec5f27be7bc5` in `golemfactory/golem@runf`.
-Current state: working function (and closure) execution, `golem.get` working on single argument, no filesystem support.
+Current state: working function (and closure) execution, no filesystem support.
 
 ### Description
 The goal of this library is to provide wrappers analogous to these in [Ray](https://github.com/ray-project/ray). This is how it should look like from the users perspective:
