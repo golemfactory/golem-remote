@@ -1,4 +1,5 @@
 import os
+import shutil
 import time
 from pathlib import Path
 from typing import Tuple
@@ -11,6 +12,7 @@ from golem_remote.runf_helpers import SubtaskID
 # golem init #
 ##############
 
+shutil.rmtree("abcd", ignore_errors=True)
 os.mkdir("abcd")
 with open("./abcd/aaa.txt", "w") as f:
     f.write("Wstąpiłem na działo")
@@ -30,10 +32,9 @@ secret_sauce = "Secret"
 
 
 @golem.remote
-def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") \
-        -> Tuple[int, str, str, str]:
+def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") -> Tuple[int, str, str, str]:
     time.sleep(1)  # expensive call
-    with open("./abcd.aaa.txt", "r") as f:
+    with open("./abcd/aaa.txt", "r") as f:
         c = f.read()
 
     print(f"Running func: {arg1} {arg2} {kwarg1} {kwarg2} {c}")
@@ -46,7 +47,6 @@ def func(arg1: int, arg2: int, kwarg1: str="abc", kwarg2: str="def") \
 
 res_id1: SubtaskID = func.remote(1, 2, kwarg1="abcd")
 
-# SubtaskIDs work as in ray
 res1 = golem.get(res_id1)
 print(f"Result: {res1}")
 

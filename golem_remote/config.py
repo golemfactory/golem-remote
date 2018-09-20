@@ -2,9 +2,9 @@ from pathlib import Path
 
 from golem_remote.runf_helpers import Host, Port
 
-PYTHON_PATH = Path("/", "home", "jacek", "golemenv", "bin", "python3")
-GOLEM_DIR = Path("/", "home", "jacek", "golem_data", "golem4_r")
-GOLEMCLI = Path("/", "home", "jacek", "golem_orig", "golemcli.py")
+PYTHON_PATH = Path("~", "golemenv", "bin", "python3").expanduser()
+GOLEM_DIR = Path("~", "golem_data", "golem4_r").expanduser()
+GOLEMCLI = Path("~", "golem_orig", "golemcli.py").expanduser()
 
 GOLEM_PORT: Port = 40102
 GOLEM_HOST: Host = "127.0.0.1"

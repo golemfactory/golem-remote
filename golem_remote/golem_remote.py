@@ -1,26 +1,29 @@
+import logging
 from functools import wraps
 from pathlib import Path
-from typing import Optional, Set
+from typing import Optional, Set, Union, Iterable, Any, Callable, Iterator
 
 from golem_remote import config
-from golem_remote.logging import enable_std_output
-from golem_remote.runf_helpers import Host, Port, TaskID, SubtaskParams, SubtaskData
+from golem_remote.runf_helpers import Host, Port, TaskID, SubtaskParams, SubtaskData, SubtaskID
 from .golem_client import GolemClientInterface, GolemClient
 
+
+# Between singleton and global var, I choose global var
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
 
-enable_std_output()
+# Enable INFO logging - just for debugging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 
 class RemoteFunction():
     # pylint: disable=redefined-outer-name
-    def __init__(self, function, client: GolemClientInterface) -> None:
+    def __init__(self, function: Callable[..., Any], client: GolemClientInterface) -> None:
         self.function = function
         self.client = client
 
-    # TODO should have the same signature as f
-    # but for now we'll leave it like this
-    def remote(self, *args, **kwargs):
+    # TODO remote should have the same signature as f - use functools.wraps or inspect module
+    def remote(self, *args, **kwargs) -> SubtaskID:
         subtask_id = client.run_function(
             SubtaskData(
                 function=self.function,
@@ -48,10 +51,32 @@ def remote(f):
     return RemoteFunction(f, client)
 
 
+
 @golem_running
-def get(subtask_id):
+def wait(items: Iterable[SubtaskID], num_returns=1):
+    """This waits for the k of n promises to resolve analogously to ray.wait() - e.g. if
+        f(x) = sleep(x); return x
+        Fx = f.remote(x)
+    then
+        golem.get([F1, F4, F5, F3], 2) == ([1, 3], [F4, F5])"""
+    raise NotImplementedError()
+
+
+
+@golem_running
+def get(item: Union[SubtaskID, Iterable[SubtaskID]]) -> Union[Any, Iterator[Any]]:
+    """Wait for the promise(s) to resolve and return corresponding object(s)"""
     global client  # pylint: disable=global-statement
-    return client.get(subtask_id)
+
+    if isinstance(item, SubtaskID):
+        return client.get(item)
+
+    if isinstance(item, Iterable):
+        for x in item:
+            yield client.get(x)
+
+    raise Exception(f"Non supported parameter: got type {type(item)}, "
+                    f"should be {Union[SubtaskID, Iterable[SubtaskID]]}")
 
 
 def init(host: Host = "127.0.0.1",
@@ -77,5 +102,5 @@ def init(host: Host = "127.0.0.1",
         clear_db=clear_db,
         task_id=task_id,
         task_files=task_files)
-    client.initialize_task()  # type: ignore
+    client.initialize_task()
     return client.task_id  # type: ignore

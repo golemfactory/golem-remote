@@ -2,6 +2,7 @@ import enum
 import json
 import logging
 import os
+import shutil
 import subprocess
 import tempfile
 import time
@@ -11,6 +12,7 @@ from typing import Optional, Any, Dict, Set
 from uuid import uuid4 as make_uuid
 
 from golem_remote import config, consts
+from golem_remote.open_file import list_dir_recursive
 from .config import PYTHON_PATH
 from .encoding import encode_obj_to_str, decode_str_to_obj
 from .queue_helpers import Queue, get_result_key
@@ -66,7 +68,11 @@ def fill_task_definition(template_path: Path,
     task_definition["options"]["queue_host"] = queue_host
     task_definition["options"]["queue_port"] = queue_port
     task_definition["subtasks"] = number_of_subtasks
-    task_definition["resources"] = str(task_files_dir) if task_files_dir else []
+    task_definition["resources"] = []
+    if task_files_dir:
+        task_definition["resources"] += [str(file)
+                                        for file in list_dir_recursive(task_files_dir)]
+        # task_definition["resources"] += [str(task_files_dir.absolute())]
 
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
@@ -81,8 +87,11 @@ def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
 
     for f in task_files:
         dest_path = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f))
-        os.symlink(str(f), str(Path(tmp, dest_path)))
+        # os.symlink(str(f.absolute()), str(Path(tmp, dest_path)))
+        shutil.copy(str(f.absolute()), str(Path(tmp, dest_path)))
 
+    # we create a guard file because otherwise Golem does not work properly
+    Path(tmp, ".guard").touch()
 
 def _run_cmd(cmd):
     logger.info(f"Running command {' '.join(cmd)}")
@@ -142,7 +151,7 @@ class GolemClient(GolemClientInterface):
             # "-d", str(self.golem_dir)]  # TODO uncomment it when rpc_auth will be merged
         ]
 
-    def _run(self, data: SubtaskData):
+    def _run(self, data: SubtaskData) -> SubtaskID:
         if self.queue is None:
             raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
 
@@ -155,7 +164,7 @@ class GolemClient(GolemClientInterface):
         self.subtasks[subtask_id] = SubtaskState.running
         return subtask_id
 
-    def _create_golem_task(self):
+    def _create_golem_task(self) -> None:
         if self.task_id:
             logger.warning(f"Task already initialized with {self.task_id}")
             return
@@ -175,10 +184,10 @@ class GolemClient(GolemClientInterface):
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
 
-    def _create_queue(self):
+    def _create_queue(self) -> None:
         self.queue = Queue(self.task_id, self.queue_host, self.queue_port)
 
-    def initialize_task(self):
+    def initialize_task(self) -> None:
         self._create_golem_task()
         self._create_queue()
 
@@ -197,10 +206,7 @@ class GolemClient(GolemClientInterface):
 
     # TODO this is a naive implementation
     # later, there should be something like async_redis here
-    def get(self,
-            subtask_id: SubtaskID,
-            blocking: Optional[bool] = True,
-            timeout: Optional[float] = None):
+    def get(self, subtask_id, blocking = True, timeout= None):
         if self.queue is None:
             raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
 
