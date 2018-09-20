@@ -130,7 +130,7 @@ class GolemClient(GolemClientInterface):
         self.clear_db = clear_db
         self.task_id = task_id
         self.number_of_subtasks = number_of_subtasks
-        self.task_files = task_files
+        self.task_files = task_files if task_files else []
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)

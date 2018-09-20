@@ -1,7 +1,7 @@
 import logging
 from functools import wraps
 from pathlib import Path
-from typing import Optional, Set, Union, Iterable, Any, Callable, Iterator
+from typing import Optional, Set, Union, Iterable, Any, Callable, Iterator, List
 
 from golem_remote import config
 from golem_remote.runf_helpers import Host, Port, TaskID, SubtaskParams, SubtaskData, SubtaskID
@@ -64,7 +64,7 @@ def wait(items: Iterable[SubtaskID], num_returns=1):
 
 
 @golem_running
-def get(item: Union[SubtaskID, Iterable[SubtaskID]]) -> Union[Any, Iterator[Any]]:
+def get(item: Union[SubtaskID, Iterable[SubtaskID]]) -> Union[Any, List[Any]]:
     """Wait for the promise(s) to resolve and return corresponding object(s)"""
     global client  # pylint: disable=global-statement
 
@@ -72,8 +72,9 @@ def get(item: Union[SubtaskID, Iterable[SubtaskID]]) -> Union[Any, Iterator[Any]
         return client.get(item)
 
     if isinstance(item, Iterable):
-        for x in item:
-            yield client.get(x)
+        # for x in item:
+        #     yield client.get(x)
+        return [client.get(x) for x in item]
 
     raise Exception(f"Non supported parameter: got type {type(item)}, "
                     f"should be {Union[SubtaskID, Iterable[SubtaskID]]}")
