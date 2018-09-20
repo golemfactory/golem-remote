@@ -51,7 +51,6 @@ def remote(f):
     return RemoteFunction(f, client)
 
 
-
 @golem_running
 def wait(items: Iterable[SubtaskID], num_returns=1):
     """This waits for the k of n promises to resolve analogously to ray.wait() - e.g. if
@@ -60,7 +59,6 @@ def wait(items: Iterable[SubtaskID], num_returns=1):
     then
         golem.get([F1, F4, F5, F3], 2) == ([1, 3], [F4, F5])"""
     raise NotImplementedError()
-
 
 
 @golem_running

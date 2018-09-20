@@ -81,6 +81,7 @@ def fill_task_definition(template_path: Path,
 
 
 def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
+    tmp = Path("~", "temporary").expanduser()
     """Takes a list of task files and a temporary directory and creates symlinks to the
     specified files there."""
     os.mkdir(os.path.join(tmp, consts.GOLEM_TASK_FILES_DIR))
@@ -92,6 +93,7 @@ def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
 
     # we create a guard file because otherwise Golem does not work properly
     Path(tmp, ".guard").touch()
+
 
 def _run_cmd(cmd):
     logger.info(f"Running command {' '.join(cmd)}")
