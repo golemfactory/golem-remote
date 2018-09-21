@@ -2,7 +2,7 @@
 
 MVP version of library for wrapping Python functions to run on golem.  
 
-Work in progress. Working revision: `d364ef748aaa94271559f62d274376f559191f74` here and `379e140c726c59bf1b80e5e61304ec5f27be7bc5` in `golemfactory/golem@runf`.
+Work in progress. Working revision: `1aa80d62032ef07d2d285669eb009712b4759096` here and `e7af451a600ca6e608bce7d46831975b3da4349b` in `golemfactory/golem@runf`.
 Current state: working function (and closure) execution, no filesystem support.
 
 ### Description
