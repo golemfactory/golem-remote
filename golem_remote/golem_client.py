@@ -92,7 +92,8 @@ def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
         shutil.copy(str(f.absolute()), str(Path(tmp, dest_path)))
 
     # we create a guard file because otherwise Golem does not work properly
-    Path(tmp, ".guard").touch()
+    with open(os.path.join(tmp, "guard"), "w") as f:
+        f.write("GUARD")
 
 
 def _run_cmd(cmd):
@@ -178,7 +179,7 @@ class GolemClient(GolemClientInterface):
             initialize_task_files(task_files_tmp, self.task_files)
             fill_task_definition(self.task_definition_template_path, self.queue_host,
                                  self.queue_port, task_definition_path, self.number_of_subtasks,
-                                 task_files_dir=Path(task_files_tmp))
+                                 task_files_dir=Path("~", "temporary").expanduser())# Path(task_files_tmp))
 
             logger.info(f"Task definition saved in {task_definition_path}")
             stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
