@@ -1,12 +1,11 @@
 import logging
 from functools import wraps
 from pathlib import Path
-from typing import Optional, Set, Union, Iterable, Any, Callable, Iterator, List
+from typing import Optional, Set, Union, Iterable, Any, Callable, List
 
 from golem_remote import config
 from golem_remote.runf_helpers import Host, Port, TaskID, SubtaskParams, SubtaskData, SubtaskID
 from .golem_client import GolemClientInterface, GolemClient
-
 
 # Between singleton and global var, I choose global var
 client: Optional[GolemClientInterface] = None  # pylint: disable=global-statement
@@ -24,14 +23,12 @@ class RemoteFunction():
 
     # TODO remote should have the same signature as f - use functools.wraps or inspect module
     def remote(self, *args, **kwargs) -> SubtaskID:
-        subtask_id = client.run_function(
+        subtask_id = self.client.run_function(
             SubtaskData(
                 function=self.function,
                 args=args,
                 kwargs=kwargs,
-                params=SubtaskParams(original_dir=Path(".").absolute())
-            )
-        )
+                params=SubtaskParams(original_dir=Path(".").absolute())))
         return subtask_id
 
 
@@ -51,14 +48,14 @@ def remote(f):
     return RemoteFunction(f, client)
 
 
-@golem_running
-def wait(items: Iterable[SubtaskID], num_returns=1):
-    """This waits for the k of n promises to resolve analogously to ray.wait() - e.g. if
-        f(x) = sleep(x); return x
-        Fx = f.remote(x)
-    then
-        golem.get([F1, F4, F5, F3], 2) == ([1, 3], [F4, F5])"""
-    raise NotImplementedError()
+# @golem_running
+# def wait(items: Iterable[SubtaskID], num_returns=1):
+#     """This waits for the k of n promises to resolve analogously to ray.wait() - e.g. if
+#         f(x) = sleep(x); return x
+#         Fx = f.remote(x)
+#     then
+#         golem.get([F1, F4, F5, F3], 2) == ([1, 3], [F4, F5])"""
+#     raise NotImplementedError()
 
 
 @golem_running

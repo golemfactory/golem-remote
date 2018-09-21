@@ -1,11 +1,11 @@
 import os
 import io
 from pathlib import Path
-from typing import Callable, Iterator
+from typing import Callable, Iterator, Optional
 
 from .consts import GOLEM_RESOURCES_DIR, GOLEM_TASK_FILES_DIR, HASH
 
-orig_open: Callable[..., io.IOBase] = None
+orig_open: Optional[Callable[..., io.IOBase]] = None
 
 
 def open_file(original_dir: Path,
@@ -19,6 +19,7 @@ def open_file(original_dir: Path,
      - os
      - shelve
      - ..."""
+
     def _open(file, *args, **kwargs) -> io.IOBase:
         file = Path(file)
         if not file.is_absolute():
@@ -27,15 +28,15 @@ def open_file(original_dir: Path,
         if HASH(file) in available_files:
             # pylint: disable=not-callable
             return orig_open(os.path.join(task_files_dir, HASH(file)), *args, **kwargs)
-        else:
-            # works normally for files other than specified
-            # pylint: disable=not-callable
-            return orig_open(file, *args, **kwargs)
+
+        # works normally for files other than specified
+        # pylint: disable=not-callable
+        return orig_open(file, *args, **kwargs)
 
     return _open
 
 
-def list_dir_recursive(dir: Path) -> Iterator[Path]:
-    for dirpath, dirnames, filenames in os.walk(str(dir), followlinks=True):
+def list_dir_recursive(directory: Path) -> Iterator[Path]:
+    for dirpath, _, filenames in os.walk(str(directory), followlinks=True):
         for name in filenames:
             yield Path(dirpath, name).absolute()

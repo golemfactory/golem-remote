@@ -12,7 +12,7 @@ from golem_remote.runf_helpers import SubtaskID
 
 golem.init(
     class_=GolemClient,
-    timeout=300
+    timeout=300,
 )
 
 #######################

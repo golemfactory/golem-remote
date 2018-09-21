@@ -4,7 +4,7 @@ import logging
 import os
 import shutil
 import subprocess
-import tempfile
+from tempfile import TemporaryDirectory
 import time
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
@@ -68,11 +68,8 @@ def fill_task_definition(template_path: Path,
     task_definition["options"]["queue_host"] = queue_host
     task_definition["options"]["queue_port"] = queue_port
     task_definition["subtasks"] = number_of_subtasks
-    task_definition["resources"] = []
-    if task_files_dir:
-        task_definition["resources"] += [str(file)
-                                        for file in list_dir_recursive(task_files_dir)]
-        # task_definition["resources"] += [str(task_files_dir.absolute())]
+    task_definition["resources"] = [] if not task_files_dir \
+        else [str(file) for file in list_dir_recursive(task_files_dir)]
 
     with open(str(output_path), "w") as f:
         json.dump(task_definition, f)
@@ -81,9 +78,8 @@ def fill_task_definition(template_path: Path,
 
 
 def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
-    tmp = Path("~", "temporary").expanduser()
     """Takes a list of task files and a temporary directory and creates symlinks to the
-    specified files there."""
+        specified files there."""
     os.mkdir(os.path.join(tmp, consts.GOLEM_TASK_FILES_DIR))
 
     for f in task_files:
@@ -92,7 +88,10 @@ def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
         shutil.copy(str(f.absolute()), str(Path(tmp, dest_path)))
 
     # we create a guard file because otherwise Golem does not work properly
-    with open(os.path.join(tmp, "guard"), "w") as f:
+    # 1) It is needed to create proper directory structure-so that golem/resources/files dir exists
+    # 2) It is needed if used does not need any additional task files - as Golem cannot start with
+    #    an empty resources list
+    with open(os.path.join(str(tmp), "guard"), "w") as f:
         f.write("GUARD")
 
 
@@ -133,7 +132,11 @@ class GolemClient(GolemClientInterface):
         self.clear_db = clear_db
         self.task_id = task_id
         self.number_of_subtasks = number_of_subtasks
-        self.task_files = task_files if task_files else []
+        self.task_files = task_files if task_files else set()
+
+        # these are set up during initialize_task()
+        self.task_definition_tmp: Optional[TemporaryDirectory] = None
+        self.task_files_tmp: Optional[TemporaryDirectory] = None
 
         self.task_definition_template_path = Path(
             os.path.dirname(__file__), consts.TASK_DEFINITION_TEMPLATE)
@@ -159,7 +162,7 @@ class GolemClient(GolemClientInterface):
             raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
 
         subtask_id = str(make_uuid())
-        data = encode_obj_to_str(data)
+        data: str = encode_obj_to_str(data)
 
         self.queue.set(subtask_id, data)
         self.queue.push(subtask_id)
@@ -172,17 +175,23 @@ class GolemClient(GolemClientInterface):
             logger.warning(f"Task already initialized with {self.task_id}")
             return
 
-        with tempfile.TemporaryDirectory() as task_definition_tmp, \
-             tempfile.TemporaryDirectory() as task_files_tmp:
-            task_definition_path = Path(task_definition_tmp, "definition.json")
+        self.task_definition_tmp = TemporaryDirectory()
+        self.task_files_tmp = TemporaryDirectory()
 
-            initialize_task_files(task_files_tmp, self.task_files)
-            fill_task_definition(self.task_definition_template_path, self.queue_host,
-                                 self.queue_port, task_definition_path, self.number_of_subtasks,
-                                 task_files_dir=Path("~", "temporary").expanduser())# Path(task_files_tmp))
+        task_definition_path = Path(self.task_definition_tmp.name, "definition.json")
 
-            logger.info(f"Task definition saved in {task_definition_path}")
-            stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
+        initialize_task_files(Path(self.task_files_tmp.name), self.task_files)
+        fill_task_definition(
+            self.task_definition_template_path,
+            self.queue_host,
+            self.queue_port,
+            task_definition_path,
+            self.number_of_subtasks,
+            task_files_dir=Path(self.task_files_tmp.name),
+        )
+
+        logger.info(f"Task definition saved in {task_definition_path}")
+        stdout = _run_cmd(self._build_start_task_cmd(task_definition_path))
 
         self.task_id = stdout.decode("ascii")[:-1]  # last char is \n
         logger.info(f"Task {self.task_id} started")
@@ -209,7 +218,7 @@ class GolemClient(GolemClientInterface):
 
     # TODO this is a naive implementation
     # later, there should be something like async_redis here
-    def get(self, subtask_id, blocking = True, timeout= None):
+    def get(self, subtask_id, blocking=True, timeout=None):
         if self.queue is None:
             raise Exception("Queue is None. Maybe you forgot to initialize_task()?")
 
