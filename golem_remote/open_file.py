@@ -23,7 +23,7 @@ def open_file(original_dir: Path,
         file = Path(file)
         if not file.is_absolute():
             file = f"{str(original_dir)}/{file[1:]}"
-        available_files = list(os.listdir(task_files_dir))
+        available_files = list(os.listdir(task_files_dir)) if os.path.exists(task_files_dir) else []
         if HASH(file) in available_files:
             # pylint: disable=not-callable
             return orig_open(os.path.join(task_files_dir, HASH(file)), *args, **kwargs)
