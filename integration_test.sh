@@ -24,4 +24,6 @@ cd ~/golem_remote/
 sleep 18
 
 /home/jacek/anaconda3/bin/python3 examples/iteration7_task_files.py
+
+rm -rf abcd
 echo "Done"

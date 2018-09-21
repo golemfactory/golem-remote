@@ -29,7 +29,7 @@ class SubtaskData(NamedTuple):
 class SubtaskDefinition(NamedTuple):
     subtask_id: SubtaskID
     queue_id: QueueID
-    data: SubtaskData
+    data: str
 
 
 class FinishComputations(NamedTuple):
