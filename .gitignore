@@ -14,3 +14,6 @@ golem_remote/__pycache__
 dump.rdb
 .mypy_cache
 *.egg-info/
+
+.idea
+abcd/*
