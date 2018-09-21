@@ -87,7 +87,7 @@ def initialize_task_files(tmp: Path, task_files: Set[Path]) -> None:
     os.mkdir(os.path.join(tmp, consts.GOLEM_TASK_FILES_DIR))
 
     for f in task_files:
-        dest_path = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f))
+        dest_path = Path(consts.GOLEM_TASK_FILES_DIR, consts.HASH(f.absolute()))
         # os.symlink(str(f.absolute()), str(Path(tmp, dest_path)))
         shutil.copy(str(f.absolute()), str(Path(tmp, dest_path)))
 
