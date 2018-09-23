@@ -49,14 +49,16 @@ results = golem.get(results_futures)  # blocking call
  - Set config options in `golem_remote/config.py`
 
 ### Running:
+ - Set up `$DATADIR_R` and `DATADIR_P` env variables to contain locations for golem datadirs.  
  - Run requestor node (for example: ```
-   python golemapp.py --log-level INFO --datadir golem_data_r/ 
+   python golemapp.py --log-level INFO --datadir $DATADIR_R 
    --accept-terms --protocol_id 97 --password "k123@" 
    -p localhost:40103 -r localhost:61000```)
  - Run provider node (for example ```
-   python golemapp.py --log-level INFO --datadir golem_data_p 
+   python golemapp.py --log-level INFO --datadir $DATADIR_P 
    --accept-terms --protocol_id 97 --password "k123@" 
    -p localhost:40102 -r localhost:61001```)
+ - If needed, wait some time until requestor node receives tETH from faucet.
  - Run redis on `localhost:6379`
  - Run your task on Golem (for example: `python examples/iteration7_golem_remote_package.py`)
 
