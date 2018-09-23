@@ -65,6 +65,7 @@ results = golem.get(results_futures)  # blocking call
  - Set up appropriate paths in `integration_test.sh` (in the package directory) and run it.
 
 ### Troubleshooting:
- - If the task is not run using the example code, ensure that you first run requestor and only then provider. 
+ - If the task does not run using the example code, ensure that you first run requestor and only then provider.
+ - If the task still does not run, you can try to turn off concent service (with `--concent disabled` flag passed to `golemapp.py`)
  - If the redis tests don't pass, ensure you don't have another redis instance running on `localhost:6379`
  - If the integration test doesn't pass, it is probably a problem with timeout. Reason is that when you run Golem for the first time, it will run benchmarks and request t(est)ETH from faucet. Getting funds takes unpredictable amount of time (typically X-1X minutes). You should therefore first run Golem separately in $DATADIR_R and $DATADIR_P (defined in `integration_test.sh` and wait for the funds to be transferred to you, and only then run integration test.
