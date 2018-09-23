@@ -2,7 +2,7 @@
 
 MVP version of library for wrapping Python functions to run on golem.
 
-**Note**: this is only the frontend part of the application. Backend is implemented as *golem app*, in the `runf_task` branch.
+**Note**: this is only the frontend part of the application. Backend is implemented as *golem app*, in the `runf_task` branch in the [main golem repository](github.com:golemfactory/golem).
 
 Work in progress. Working revision: `1aa80d62032ef07d2d285669eb009712b4759096` here and `e7af451a600ca6e608bce7d46831975b3da4349b` in `golemfactory/golem@runf_task`.
 Current state: working functions (and closures) execution, rudimentary filesystem support.
