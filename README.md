@@ -43,7 +43,7 @@ results = golem.get(results_futures)  # blocking call
 ```
 
 ### Installation:
- - install the newest version of redis from https://redis.io/download
+ - Install the newest version of redis from https://redis.io/download
  - `git clone git@github.com:golemfactory/golem.git && git checkout runf`
  - `pip install git+https://github.com/golemfactory/golem-remote.git` 
  - Set config options in `golem_remote/config.py`
